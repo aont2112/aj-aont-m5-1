@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ລະບົບເກັບກຳຄະແນນນັກຮຽນ - ມ.5/1 (12 ວິຊາ)</title>
+    <!-- Tailwind CSS for modern UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts: Noto Sans Lao -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Lao', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom scrollbar for table container */
+        .table-scrollbar::-webkit-scrollbar {
+            height: 12px;
+            width: 12px;
+        }
+        .table-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .table-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 6px;
+        }
+        .table-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* Sticky columns configuration for wide table navigation */
+        .sticky-col-1 {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+        }
+        .sticky-col-2 {
+            position: sticky;
+            left: 48px;
+            z-index: 10;
+        }
+        .sticky-col-3 {
+            position: sticky;
+            left: 288px;
+            z-index: 10;
+            box-shadow: 4px 0 8px -4px rgba(0,0,0,0.1);
+        }
+        .sticky-header-1 {
+            position: sticky;
+            left: 0;
+            z-index: 30;
+        }
+        .sticky-header-2 {
+            position: sticky;
+            left: 48px;
+            z-index: 30;
+        }
+        .sticky-header-3 {
+            position: sticky;
+            left: 288px;
+            z-index: 30;
+            box-shadow: 4px 0 8px -4px rgba(0,0,0,0.1);
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+            /* Hide everything else except the print container */
+            body > *:not(#print-area-container) {
+                display: none !important;
+            }
+            #print-area-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-shadow: none !important;
+                border: none !important;
+                background-color: white !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            /* Ensure colors and borders display well in print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Screen 0: Beautiful Sign-in / Login View -->
+    <div id="view-login" class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-950 via-slate-900 to-blue-950 no-print">
+        <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-3xl shadow-2xl border border-slate-250 relative overflow-hidden">
+            <!-- Decorative circle backgrounds inside the card -->
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-indigo-50 rounded-full filter blur-xl opacity-70"></div>
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-50 rounded-full filter blur-xl opacity-70"></div>
+            
+            <div class="relative z-10">
+                <div class="flex flex-col items-center">
+                    <!-- School Emblem Image: Real Logo added here -->
+                    <div class="w-28 h-28 mb-4 flex items-center justify-center overflow-hidden transform hover:scale-105 transition duration-300 rounded-full">
+                        <img src="logo0000.jpg" alt="ໂຮງຮຽນມັດທະຍົມຮາກແກ້ວ Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/150x150/1e3a8a/ffffff?text=HaaKKeo'">
+                    </div>
+                    <h2 class="text-center text-2xl font-extrabold text-slate-800">
+                        ລົງຊື່ເຂົ້າໃຊ້ລະບົບຄະແນນ
+                    </h2>
+                    <p class="mt-2 text-center text-xs text-slate-500 font-semibold">
+                        ໂຮງຮຽນມັດທະຍົມສຶກສາສົມບູນ ຮາກແກ້ວ | ມ.5/1
+                    </p>
+                </div>
+                
+                <form class="mt-8 space-y-6" onsubmit="handleLogin(event)">
+                    <div class="rounded-xl shadow-sm space-y-4">
+                        <div>
+                            <label for="login-code" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">ປ້ອນລະຫັດປະຈຳການຂອງທ່ານ</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                                    <i class="fa-solid fa-key"></i>
+                                </span>
+                                <input id="login-code" name="code" type="password" required 
+                                       class="appearance-none rounded-xl relative block w-full pl-10 pr-3 py-3 border border-slate-300 placeholder-slate-400 text-slate-800 font-mono font-bold tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-center sm:text-sm bg-slate-50" 
+                                       placeholder="HK51XX">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Alert -->
+                    <div id="login-error" class="hidden text-red-600 bg-red-50 text-xs rounded-xl p-3 text-center border border-red-200 font-semibold flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-circle-exclamation text-sm"></i>
+                        <span>ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ, ກະລຸນາກວດສອບຄືນໃໝ່!</span>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transition">
+                            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                                <i class="fa-solid fa-right-to-bracket text-indigo-400 group-hover:text-indigo-300 transition"></i>
+                            </span>
+                            ເຂົ້າສູ່ລະບົບ
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar (Hidden until successful login) -->
+    <nav id="app-navbar" class="hidden bg-indigo-900 text-white shadow-lg sticky top-0 z-40 no-print">
+        <div class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <!-- Real logo embedded in navbar -->
+                    <div class="w-10 h-10 bg-white rounded-full p-1 overflow-hidden flex items-center justify-center shadow-md cursor-pointer" onclick="navigateTo('home')">
+                        <img src="logo0000.jpg" alt="HaaKKeo Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/50x50/1e3a8a/ffffff?text=HK'">
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg block leading-none cursor-pointer" onclick="navigateTo('home')">ລະບົບຈັດການຄະແນນນັກຮຽນ (12 ວິຊາ)</span>
+                        <span class="text-xs text-indigo-200">ຫ້ອງ ມ.5/1 | ສົກຮຽນ 2026-2027</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-sm">
+                    <button onclick="navigateTo('home')" class="bg-indigo-800 hover:bg-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-700 transition flex items-center gap-2">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="hidden sm:inline">ໜ້າຫຼັກ</span>
+                    </button>
+                    <!-- Role badge displaying logged-in credentials -->
+                    <div class="flex items-center gap-2 bg-indigo-950 px-3 py-1.5 rounded-full border border-indigo-800 text-xs">
+                        <i class="fa-solid fa-user-shield text-yellow-400"></i>
+                        <span id="navbar-role-display">ຄູປະຈຳຫ້ອງ</span>
+                    </div>
+                    <!-- Logout Trigger -->
+                    <button onclick="handleLogout()" class="bg-rose-750 hover:bg-rose-700 text-white px-3 py-1.5 rounded-lg border border-rose-700 transition flex items-center gap-1 text-xs">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>ອອກລະບົບ</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Screen 1: Home Dashboard View -->
+    <div id="view-home" class="hidden max-w-[1700px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 no-print">
+        
+        <!-- Welcome banner -->
+        <div class="bg-gradient-to-r from-indigo-800 to-purple-900 rounded-3xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute right-0 bottom-0 opacity-10 translate-x-10 translate-y-10">
+                <i class="fa-solid fa-graduation-cap text-[200px]"></i>
+            </div>
+            <div class="relative z-10 max-w-2xl">
+                <span class="bg-indigo-600/50 text-indigo-200 text-xs font-bold px-3 py-1 rounded-full border border-indigo-500/30 uppercase tracking-wider">ຍິນດີຕ້ອນຮັບ</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold mt-3 leading-tight">ລະບົບຕິດຕາມ ແລະ ຈັດການຄະແນນຮຽນ ມ.5/1</h1>
+                <p class="mt-2 text-indigo-200 text-sm md:text-base">ຍິນດີຕ້ອນຮັບອາຈານ, ຄູປະຈຳວິຊາ ແລະ ຜູ້ປົກຄອງທຸກທ່ານ ເຂົ້າສູ່ລະບົບຕິດຕາມຜົນການຮຽນ ສົກຮຽນ 2026-2027 ຢ່າງເປັນທາງການ ດ້ວຍການຄຸ້ມຄອງທັງໝົດ 12 ວິຊາ.</p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <button id="btn-demo-fill" onclick="confirmDemoFill()" class="bg-amber-50 hover:bg-amber-600 text-indigo-950 font-bold px-4 py-2 rounded-xl transition text-xs shadow-md flex items-center gap-1.5">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>ສຸ່ມຄະແນນທົດສອບ (ທຸກວິຊາ)</span>
+                    </button>
+                    <button onclick="exportAllToExcel()" class="bg-indigo-700 hover:bg-indigo-600 text-white font-medium px-4 py-2 rounded-xl border border-indigo-600 transition text-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i>
+                        <span>ດາວໂຫຼດຄະແນນລວມທັງໝົດ</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Homeroom Teacher Exclusive Actions Menu -->
+        <div id="homeroom-exclusive-section" class="hidden bg-indigo-50 border border-indigo-100 p-6 rounded-3xl space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h3 class="text-lg font-bold text-indigo-950 flex items-center gap-2">
+                        <i class="fa-solid fa-user-gear text-indigo-600"></i>
+                        <span>ເມນູຄຸ້ມຄອງຂໍ້ມູນ ຄູປະຈຳຫ້ອງ (HK5100)</span>
+                    </h3>
+                    <p class="text-xs text-indigo-700">ລະບົບຄຸ້ມຄອງທະບຽນປະຫວັດ ແລະ ຂໍ້ມູນຕິດຕໍ່ຜູ້ປົກຄອງຂອງນັກຮຽນຫ້ອງ ມ.5/1 ທັງໝົດ 34 ຄົນ</p>
+                </div>
+                <div>
+                    <button onclick="openStudentDirectoryModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-3 rounded-xl transition text-xs shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-address-book text-sm"></i>
+                        <span>ຂໍ້ມູນນັກຮຽນ (ລາຍລະອຽດທັງໝົດ)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Monthly Grades for Parents/Teachers -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+                <div class="p-2 bg-emerald-100 text-emerald-800 rounded-lg">
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800">1. ຄະແນນລວມທຸກວິຊາປະຈຳເດືອນ (3 ຫ້ອງຍ່ອຍ + 7 ຫ້ອງພຶດຕິກຳ)</h2>
+                    <p class="text-xs text-slate-500">ເລືອກເບິ່ງລາຍງານຄະແນນລະອຽດທຸກວິຊາ ແລະ ປ້ອນຂໍ້ມູນຄວາມພຶດຕິກຳຂອງນັກຮຽນໃນແຕ່ລະເດືອນ ຫຼື ພາກຮຽນ</p>
+                </div>
+            </div>
+
+            <!-- Grid of Months / Periods buttons -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Semester 1 Periods -->
+                <button onclick="openMonthlyOverview('m9')" class="bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-slate-400 font-semibold">ພາກຮຽນ I</span>
+                        <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-indigo-500 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-slate-800">ເດືອນ 9</span>
+                        <span class="text-[11px] text-slate-500">ຄະແນນ + ຄວາມພຶດຕິກຳ</span>
+                    </div>
+                </button>
+
+                <button onclick="openMonthlyOverview('m10')" class="bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-slate-400 font-semibold">ພາກຮຽນ I</span>
+                        <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-indigo-500 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-slate-800">ເດືອນ 10</span>
+                        <span class="text-[11px] text-slate-500">ຄະແນນ + ຄວາມພຶດຕິກຳ</span>
+                    </div>
+                </button>
+
+                <button onclick="openMonthlyOverview('m11')" class="bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-slate-400 font-semibold">ພາກຮຽນ I</span>
+                        <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-indigo-500 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-slate-800">ເດືອນ 11</span>
+                        <span class="text-[11px] text-slate-500">ຄະແນນ + ຄວາມພຶດຕິກຳ</span>
+                    </div>
+                </button>
+
+                <button onclick="openMonthlyOverview('m12')" class="bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-slate-400 font-semibold">ພາກຮຽນ I</span>
+                        <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-indigo-500 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-slate-800">ເດືອນ 12</span>
+                        <span class="text-[11px] text-slate-500">ຄະແນນ + ຄວາມພຶດຕິກຳ</span>
+                    </div>
+                </button>
+
+                <button onclick="openMonthlyOverview('s1')" class="bg-violet-50 hover:bg-violet-100 border border-violet-150 hover:border-violet-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-violet-500 font-bold">ສອບເສັງ</span>
+                        <i class="fa-solid fa-arrow-right text-violet-400 group-hover:text-violet-700 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-violet-950">ເສັງພາກຮຽນ 1</span>
+                        <span class="text-[11px] text-violet-600 font-medium">ສະເລ່ຍ | ເສັງພາກ | ສຸດທ້າຍ</span>
+                    </div>
+                </button>
+
+                <!-- Semester 2 Periods -->
+                <button onclick="openMonthlyOverview('m2')" class="bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-slate-400 font-semibold">ພາກຮຽນ II</span>
+                        <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-emerald-500 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-slate-800">ເດືອນ 2</span>
+                        <span class="text-[11px] text-slate-500">ຄະແນນ + ຄວາມພຶດຕິກຳ</span>
+                    </div>
+                </button>
+
+                <button onclick="openMonthlyOverview('m3')" class="bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-slate-400 font-semibold">ພາກຮຽນ II</span>
+                        <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-emerald-500 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-slate-800">ເດືອນ 3</span>
+                        <span class="text-[11px] text-slate-500">ຄະແນນ + ຄວາມພຶດຕິກຳ</span>
+                    </div>
+                </button>
+
+                <button onclick="openMonthlyOverview('m4')" class="bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-slate-400 font-semibold">ພາກຮຽນ II</span>
+                        <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-emerald-500 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-slate-800">ເດືອນ 4</span>
+                        <span class="text-[11px] text-slate-500">ຄະແນນ + ຄວາມພຶດຕິກຳ</span>
+                    </div>
+                </button>
+
+                <button onclick="openMonthlyOverview('s2')" class="bg-emerald-50 hover:bg-emerald-100 border border-emerald-150 hover:border-emerald-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-emerald-600 font-bold">ສອບເສັງ</span>
+                        <i class="fa-solid fa-arrow-right text-emerald-400 group-hover:text-emerald-700 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-emerald-950">ເສັງພາກຮຽນ 2</span>
+                        <span class="text-[11px] text-emerald-600 font-medium">ສະເລ່ຍ | ເສັງພາກ | ສຸດທ້າຍ</span>
+                    </div>
+                </button>
+
+                <!-- Yearly Summary -->
+                <button onclick="openMonthlyOverview('year')" class="bg-amber-50 hover:bg-amber-100 border border-amber-150 hover:border-amber-300 p-4 rounded-2xl shadow-sm hover:shadow transition text-left flex flex-col justify-between h-28 group">
+                    <div class="flex justify-between items-start w-full">
+                        <span class="text-xs text-amber-600 font-bold">ສະຫຼຸບປີ</span>
+                        <i class="fa-solid fa-trophy text-amber-400 group-hover:text-amber-600 transition"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold text-amber-950">ສະເລ່ຍທັງປີ</span>
+                        <span class="text-[11px] text-amber-600 font-medium">ພຮ 1 | ພຮ 2 | ທັງປີ</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 2: Subject Teachers (Data Entry Cards) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+                <div class="p-2 bg-indigo-100 text-indigo-800 rounded-lg">
+                    <i class="fa-solid fa-book-bookmark text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800">2. ປ້ອນຄະແນນແຍກຕາມວິຊາ (ຄູປະຈຳວິຊາ)</h2>
+                    <p class="text-xs text-slate-500">ກະລຸນາເລືອກວິຊາຮຽ ເພື່ອເຂົ້າໄປປ້ອນຄະແນນ, ກວດກາ ແລະ ປະເມີນຜົນນັກຮຽນໃນແຕ່ລະເດືອນ</p>
+                </div>
+            </div>
+
+            <!-- Grid of Subject Cards (12 cards in total) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="subject-cards-grid">
+                <!-- 1. Lao Language -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="lao">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-amber-50 text-amber-600 rounded-xl">
+                            <i class="fa-solid fa-language text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາສັງຄົມ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">1. ພາສາລາວ-ວັນນະຄະດີ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ຕິມ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('lao')" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 2. Math -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="math">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
+                            <i class="fa-solid fa-calculator text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາຄຳນວນ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">2. ຄະນິດສາດ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ທອງທິບ ແກ້ວອຸດົມ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('math')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 3. Civic Education -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="civics">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-red-50 text-red-600 rounded-xl">
+                            <i class="fa-solid fa-scale-balanced text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາສັງຄົມ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">3. ສຶກສາພົນລະເມືອງ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ໄໝ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('civics')" class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 4. Physics -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="physics">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-purple-50 text-purple-600 rounded-xl">
+                            <i class="fa-solid fa-atom text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາຄຳນວນ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">4. ຟີຊິກສາດ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ສຸນີ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('physics')" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 5. Chemistry -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="chemistry">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-rose-50 text-rose-600 rounded-xl">
+                            <i class="fa-solid fa-flask text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາຄຳນວນ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">5. ເຄມີສາດ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ສີສຸດາ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('chemistry')" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 6. Biology -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="biology">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-teal-50 text-teal-600 rounded-xl">
+                            <i class="fa-solid fa-dna text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາທຳມະຊາດ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">6. ຊີວະວິທະຍາ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ບຸນປອນ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('biology')" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 7. Geography -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="geography">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-sky-50 text-sky-600 rounded-xl">
+                            <i class="fa-solid fa-earth-asia text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາສັງຄົມ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">7. ພູມສາດ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ກາ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('geography')" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 8. History -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="history">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-orange-50 text-orange-600 rounded-xl">
+                            <i class="fa-solid fa-clock-rotate-left text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາສັງຄົມ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">8. ປະຫວັດສາດ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ຈ໋ອກກີ້</p>
+                    </div>
+                    <button onclick="openSubjectEntry('history')" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 9. ICT -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="ict">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+                            <i class="fa-solid fa-laptop-code text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາເຕັກໂນໂລຊີ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">9. ICT</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ປະຈຳວິຊາ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('ict')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 10. English -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="english">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+                            <i class="fa-solid fa-globe text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ພາສາຕ່າງປະເທດ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">10. ພາສາອັງກິດ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ປະຈຳວິຊາ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('english')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 11. Japanese -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="japanese">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-fuchsia-50 text-fuchsia-600 rounded-xl">
+                            <i class="fa-solid fa-torii-gate text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ພາສາຕ່າງປະເທດ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">11. ພາສາຢີ່ປຸ່ນ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ປະຈຳວິຊາ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('japanese')" class="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+
+                <!-- 12. Physical Education -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between gap-4 card-subject" data-subject="pe">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-lime-50 text-lime-750 rounded-xl">
+                            <i class="fa-solid fa-volleyball text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">ວິຊາພະລະ</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">12. ພະລະສຶກສາ</h3>
+                        <p class="text-xs text-slate-400 mt-1">ຄູສອນ: ອາຈານ ລີໂອ</p>
+                    </div>
+                    <button onclick="openSubjectEntry('pe')" class="w-full bg-lime-600 hover:bg-lime-750 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 btn-subject-card">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>ເຂົ້າປ້ອນຄະແນນ</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Monthly Multi-Subject Overview View -->
+    <div id="view-monthly-overview" class="hidden max-w-[1700px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 no-print">
+        
+        <!-- Header & Breadcrumbs -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div>
+                <button onclick="navigateTo('home')" class="text-indigo-600 hover:text-indigo-800 font-medium text-xs flex items-center gap-1.5 mb-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>ກັບຄືນໜ້າຫຼັກ</span>
+                </button>
+                <h1 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-emerald-600"></i>
+                    <span>ລາຍງານຄະແນນລະອຽດທຸກວິຊາ: <span id="monthly-period-title" class="text-indigo-600">ເດືອນ 9</span></span>
+                </h1>
+                <p class="text-xs text-slate-400 mt-1">ສະແດງທັງ ຄະແນນວິຊາ, ຜົນລວມ, ແລະ ຊ່ອງປ້ອນຂໍ້ມູນຄວາມພຶດຕິກຳ/ການຂາດຮຽນທີ່ຈະລິ້ງໄປຍັງໃບລາຍງານໂດຍກົງ</p>
+            </div>
+            
+            <button onclick="exportMonthlyReportToExcel()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-file-excel"></i>
+                <span>ດາວໂຫຼດ Excel ປະຈຳເດືອນ</span>
+            </button>
+        </div>
+
+        <!-- Filters & Search for report -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="relative w-full md:w-96">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="report-search" oninput="filterReportStudents()" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="ຄົ້ນຫານັກຮຽນດ້ວຍຊື່ ຫຼື ນາມສະກຸນ...">
+            </div>
+            <div class="text-xs text-slate-400 flex flex-wrap items-center gap-3">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-circle text-rose-500"></i> ຄະແນນ &lt; 5.0 ເປັນສີແດງ</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-arrows-left-right text-indigo-500"></i> ເລື່ອນຂວາເພື່ອປ້ອນຂໍ້ມູນຄວາມພຶດຕິກຳ ➡️</span>
+                <span id="behavior-permission-notice" class="flex items-center gap-1 text-amber-600 font-semibold"><i class="fa-solid fa-circle-exclamation"></i> ສະເພາະຄູປະຈຳຫ້ອງແກ້ໄຂຄວາມພຶດຕິກຳໄດ້</span>
+            </div>
+        </div>
+
+        <!-- Monthly Report Table -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div class="overflow-x-auto table-scrollbar">
+                <!-- Spans 12 subjects + sum + avg + 7 conduct fields + action column -->
+                <table class="w-full text-left border-collapse table-fixed min-w-[5800px]" id="monthly-report-table">
+                    <thead id="monthly-report-header">
+                        <!-- Dynamic generated in JavaScript based on period selection -->
+                    </thead>
+                    <tbody id="monthly-report-body" class="divide-y divide-slate-100 text-xs text-slate-700">
+                        <!-- Filled by Javascript dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Screen 3: Subject Teacher Entry View -->
+    <div id="view-subject-entry" class="hidden max-w-[1700px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 no-print">
+        
+        <!-- Header Controls & Statistics -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            
+            <!-- Subject and Controls Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 lg:col-span-1 flex flex-col justify-between gap-4">
+                <div>
+                    <button onclick="navigateTo('home')" class="text-indigo-600 hover:text-indigo-800 font-medium text-xs flex items-center gap-1.5 mb-4">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>ກັບຄືນໜ້າຫຼັກ</span>
+                    </button>
+                    
+                    <label class="block text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">...ປ່ຽນວິຊາປ້ອນຄະແນນ...</label>
+                    <div class="relative">
+                        <select id="subject-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="lao">1. ພາສາລາວ-ວັນນະຄະດີ</option>
+                            <option value="math">2. ຄະນິດສາດ</option>
+                            <option value="civics">3. ສຶກສາພົນລະເມືອງ</option>
+                            <option value="physics">4. ຟີຊິກສາດ</option>
+                            <option value="chemistry">5. ເຄມີສາດ</option>
+                            <option value="biology">6. ຊີວະວິທະຍາ</option>
+                            <option value="geography">7. ພູມສາດ</option>
+                            <option value="history">8. ປະຫວັດສາດ</option>
+                            <option value="ict">9. ICT</option>
+                            <option value="english">10. ພາສາອັງກິດ</option>
+                            <option value="japanese">11. ພາສາຢີ່ປຸ່ນ</option>
+                            <option value="pe">12. ພະລະສຶກສາ</option>
+                        </select>
+                    </div>
+                    
+                    <p class="text-[11px] text-slate-400 mt-3 leading-relaxed">
+                        * ຄະແນນສະເລ່ຍແຕ່ລະເດືອນ = <span class="font-semibold text-slate-600">(ໃນຫ້ອງ + ເສັງ) / 2</span><br>
+                        * <b>ສະເລ່ຍ ພຮ 1</b> = <span class="font-semibold text-slate-600">(ເດືອນ 9+10+11+12) / 4</span><br>
+                        * <b>ສະເລ່ຍສຸດທ້າຍ ພຮ 1</b> = <span class="font-semibold text-slate-600">(ສະເລ່ຍ ພຮ 1 + ເສັງພາກ) / 2</span>
+                    </p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+                    <button onclick="exportToCSV()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-sm shadow-sm">
+                        <i class="fa-solid fa-file-excel"></i>
+                        <span>ດາວໂຫຼດໄຟລ໌ Excel (CSV)</span>
+                    </button>
+                    
+                    <div class="grid grid-cols-2 gap-2">
+                        <button id="btn-save-grades" onclick="saveToLocalStorage()" class="bg-indigo-600 hover:bg-indigo-700 text-white py-1.5 px-3 rounded-lg text-xs font-medium transition duration-200">
+                            <i class="fa-solid fa-floppy-disk mr-1"></i> ບັນທຶກ
+                        </button>
+                        <button id="btn-clear-grades" onclick="confirmClearGrades()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 py-1.5 px-3 rounded-lg text-xs font-medium transition duration-200 border border-rose-200">
+                            <i class="fa-solid fa-trash mr-1"></i> ລຶບຄະແນນໃໝ່
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                
+                <!-- Class Average -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <span class="block text-slate-400 text-sm font-medium">ຄະແນນສະເລ່ຍທັງປີຂອງຫ້ອງ</span>
+                        <span id="class-avg" class="text-3xl font-bold text-slate-800 mt-1 block">0.0</span>
+                        <span class="text-xs text-slate-500 mt-1 block">ຄະແນນເຕັມ 10.0</span>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-full text-blue-600">
+                        <i class="fa-solid fa-chart-simple text-2xl"></i>
+                    </div>
+                </div>
+
+                <!-- Pass Rate -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <span class="block text-slate-400 text-sm font-medium">ອັດຕາການເສັງຜ່ານທັງປີ</span>
+                        <span id="pass-rate" class="text-3xl font-bold text-emerald-600 mt-1 block">0%</span>
+                        <span id="pass-count" class="text-xs text-slate-500 mt-1 block">0 ຈາກ 34 ຄົນ (ສະເລ່ຍ ≥ 5.0)</span>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-full text-emerald-600">
+                        <i class="fa-solid fa-circle-check text-2xl"></i>
+                    </div>
+                </div>
+
+                <!-- Top & Bottom Performers -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <span class="block text-slate-400 text-sm font-medium">ຄະແນນສະເລ່ຍ ສູງສຸດ / ຕ່ຳສຸດ</span>
+                        <div class="mt-1 flex items-baseline gap-2">
+                            <span id="max-score" class="text-2xl font-bold text-indigo-600">0.0</span>
+                            <span class="text-slate-300">/</span>
+                            <span id="min-score" class="text-xl font-bold text-rose-500">0.0</span>
+                        </div>
+                        <span class="text-xs text-slate-500 mt-1 block">ຂອງວິຊາທີ່ເລືອກ</span>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-full text-indigo-600">
+                        <i class="fa-solid fa-trophy text-2xl"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Filter & Search Section -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="relative w-full md:w-96">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="search-bar" oninput="filterStudents()" class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="ຄົ້ນຫານັກຮຽນດ້ວຍຊື່ ຫຼື ນາມສະກຸນ...">
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-end">
+                <span class="text-xs font-semibold text-slate-400 uppercase mr-2 hidden sm:inline">ກັ່ນຕອງ (ສະເລ່ຍທັງປີ):</span>
+                <button onclick="setFilter('all')" id="filter-all" class="bg-indigo-50 text-indigo-700 border border-indigo-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200">ທັງໝົດ (34)</button>
+                <button onclick="setFilter('passed')" id="filter-passed" class="bg-slate-50 text-slate-600 hover:bg-slate-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200">ເສັງຜ່ານ (≥5.0)</button>
+                <button onclick="setFilter('failed')" id="filter-failed" class="bg-slate-50 text-slate-600 hover:bg-slate-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200">ຕົກ (&lt;5.0)</button>
+            </div>
+        </div>
+
+        <!-- Student Gradebook Table Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                <h2 class="text-slate-800 font-bold text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-indigo-600"></i>
+                    <span>ຕາຕະລາງປ້ອນຄະແນນ: ວິຊາ <span id="current-subject-title" class="text-indigo-600">ພາສາລາວ-ວັນນະຄະດີ</span></span>
+                </h2>
+                <!-- Permission warning badge -->
+                <div class="flex items-center gap-2">
+                    <span id="subject-permission-badge" class="hidden text-xs text-rose-605 bg-rose-50 border border-rose-100 px-3 py-1 rounded-full font-bold">
+                        <i class="fa-solid fa-lock mr-1"></i> ທ່ານບໍ່ມີສິດແກ້ໄຂວິຊານີ້
+                    </span>
+                    <span class="text-xs text-indigo-600 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full font-medium">ເລື່ອນໄປທາງຂວາເພື່ອເບິ່ງເດືອນອື່ນໆ ➡️</span>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto table-scrollbar">
+                <table class="w-full text-left border-collapse table-fixed min-w-[2300px]">
+                    <thead>
+                        <!-- Row 1: Period Headers -->
+                        <tr class="border-b border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold text-center">
+                            <th rowspan="2" class="py-3 px-2 w-12 sticky-header-1 bg-slate-100 border-r border-slate-200">ລ/ດ</th>
+                            <th rowspan="2" class="py-3 px-4 w-60 text-left sticky-header-2 bg-slate-100 border-r border-slate-200">ຊື່ ແລະ ນາມສະກຸນ</th>
+                            <th rowspan="2" class="py-3 px-2 w-28 border-r border-slate-200 sticky-header-3 bg-slate-100">ຊື່ຫຼິ້ນ</th>
+                            
+                            <!-- Semester 1 Periods -->
+                            <th colspan="3" class="bg-indigo-50 text-indigo-900 border-r border-slate-200 py-2">ເດືອນ 9</th>
+                            <th colspan="3" class="bg-indigo-100/50 text-indigo-900 border-r border-slate-200 py-2">ເດືອນ 10</th>
+                            <th colspan="3" class="bg-indigo-50 text-indigo-900 border-r border-slate-200 py-2">ເດືອນ 11</th>
+                            <th colspan="3" class="bg-indigo-100/50 text-indigo-900 border-r border-slate-200 py-2">ເດືອນ 12</th>
+                            <th colspan="3" class="bg-violet-100 text-violet-950 border-r-2 border-violet-300 py-2">ເສັງພາກຮຽນ 1</th>
+                            
+                            <!-- Semester 2 Periods -->
+                            <th colspan="3" class="bg-emerald-50 text-emerald-900 border-r border-slate-200 py-2">ເດືອນ 2</th>
+                            <th colspan="3" class="bg-emerald-100/50 text-emerald-900 border-r border-slate-200 py-2">ເດືອນ 3</th>
+                            <th colspan="3" class="bg-emerald-50 text-emerald-900 border-r border-slate-200 py-2">ເດືອນ 4</th>
+                            <th colspan="3" class="bg-teal-100 text-teal-950 border-r-2 border-teal-300 py-2">ເສັງພາກຮຽນ 2</th>
+                            
+                            <!-- Year End Calculations -->
+                            <th class="w-24 bg-amber-50 text-amber-900 border-r border-slate-200 py-2">ສະເລ່ຍ ພຮ 1</th>
+                            <th class="w-24 bg-amber-50 text-amber-900 border-r border-slate-200 py-2">ສະເລ່ຍ ພຮ 2</th>
+                            <th class="w-24 bg-amber-100 text-amber-950 border-r border-slate-200 py-2 font-bold">ສະເລ່ຍທັງປີ</th>
+                            <th class="w-28 bg-slate-200 text-slate-800 py-2">ຜົນການຮຽນ</th>
+                        </tr>
+                        <!-- Row 2: Sub-headers for Class, Exam, and Average -->
+                        <tr class="border-b border-slate-200 bg-slate-50 text-slate-500 text-[10px] font-bold text-center">
+                            <!-- Month 9 -->
+                            <th class="py-2 px-1 w-16 bg-indigo-50/30">ໃນຫ້ອງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-50/30">ເສັງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-50 font-semibold border-r border-slate-200">ສະເລ່ຍ</th>
+                            <!-- Month 10 -->
+                            <th class="py-2 px-1 w-16 bg-indigo-100/20">ໃນຫ້ອງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-100/20">ເສັງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-100/40 font-semibold border-r border-slate-200">ສະເລ່ຍ</th>
+                            <!-- Month 11 -->
+                            <th class="py-2 px-1 w-16 bg-indigo-50/30">ໃນຫ້ອງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-50/30">ເສັງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-50 font-semibold border-r border-slate-200">ສະເລ່ຍ</th>
+                            <!-- Month 12 -->
+                            <th class="py-2 px-1 w-16 bg-indigo-100/20">ໃນຫ້ອງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-100/20">ເສັງ</th>
+                            <th class="py-2 px-1 w-16 bg-indigo-100/40 font-semibold border-r border-slate-200">ສະເລ່ຍ</th>
+                            
+                            <!-- Exam Semester 1 -->
+                            <th class="py-2 px-1 w-24 bg-violet-100/50 text-indigo-900 font-bold">ສະເລ່ຍ ພຮ 1</th>
+                            <th class="py-2 px-1 w-16 bg-violet-50">ເສັງພາກ</th>
+                            <th class="py-2 px-1 w-16 bg-violet-100 font-bold border-r-2 border-violet-300">ສະເລ່ຍສຸດທ້າຍ</th>
+                            
+                            <!-- Month 2 -->
+                            <th class="py-2 px-1 w-16 bg-emerald-50/30">ໃນຫ້ອງ</th>
+                            <th class="py-2 px-1 w-16 bg-emerald-50/30">ເສັງ</th>
+                            <th class="py-2 px-1 w-16 bg-emerald-50 font-semibold border-r border-slate-200">ສະເລ່ຍ</th>
+                            <!-- Month 3 -->
+                            <th class="py-2 px-1 w-16 bg-emerald-100/20">ໃນຫ້ອງ</th>
+                            <th class="py-2 px-1 w-16 bg-emerald-100/20">ເສັງ</th>
+                            <th class="py-2 px-1 w-16 bg-emerald-100/40 font-semibold border-r border-slate-200">ສະເລ່ຍ</th>
+                            <!-- Month 4 -->
+                            <th class="py-2 px-1 w-16 bg-emerald-50/30">ໃນຫ້ອງ</th>
+                            <th class="py-2 px-1 w-16 bg-emerald-50/30">ເສັງ</th>
+                            <th class="py-2 px-1 w-16 bg-emerald-50 font-semibold border-r border-slate-200">ສະເລ່ຍ</th>
+                            
+                            <!-- Exam Semester 2 -->
+                            <th class="py-2 px-1 w-24 bg-teal-100/50 text-teal-900 font-bold">ສະເລ່ຍ ພຮ 2</th>
+                            <th class="py-2 px-1 w-16 bg-teal-50">ເສັງພາກ</th>
+                            <th class="py-2 px-1 w-16 bg-teal-100 font-bold border-r-2 border-teal-300">ສະເລ່ຍສຸດທ້າຍ</th>
+                            
+                            <!-- Year End empty markers -->
+                            <th class="bg-amber-50 border-r border-slate-200"></th>
+                            <th class="bg-amber-50 border-r border-slate-200"></th>
+                            <th class="bg-amber-100 border-r border-slate-200"></th>
+                            <th class="bg-slate-100"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-table-body" class="divide-y divide-slate-100 text-sm text-slate-700">
+                        <!-- Student rows will be dynamically injected by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Screen 4: Print & Interactive Viewer Container (Overlay Printable Modal) -->
+    <div id="view-student-report-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 overflow-y-auto p-4 sm:p-6 md:p-10 flex justify-center items-start">
+        <!-- Close overlay trigger -->
+        <div class="absolute inset-0 no-print" onclick="closeStudentModal()"></div>
+        
+        <!-- Modal Card Wrapper -->
+        <div class="bg-white rounded-2xl max-w-4xl w-full shadow-2xl border border-slate-200 relative z-10 flex flex-col no-print mb-10">
+            <!-- Modal Header Controls -->
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50 rounded-t-2xl">
+                <div class="flex items-center gap-2">
+                    <span class="p-2 bg-indigo-100 text-indigo-800 rounded-lg"><i class="fa-solid fa-address-card"></i></span>
+                    <div>
+                        <h3 class="font-bold text-slate-800">ພຣີວິວ ໃບລາຍງານຜົນການຮຽນ</h3>
+                        <p class="text-xs text-slate-400">ຂໍ້ມູນຄວາມພຶດຕິກຳ ແລະ ຄະແນນຄຸນສົມບັດດ້ານລຸ່ມຈະຊິງຄ໌ກັບຕາຕະລາງປ້ອນຂໍ້ມູນຫຼັກໂດຍກົງ</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-4 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                        <i class="fa-solid fa-print"></i>
+                        <span>ພິມໃບລາຍງານ (Print)</span>
+                    </button>
+                    <button onclick="closeStudentModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs px-3 py-2 rounded-xl transition">
+                        <i class="fa-solid fa-xmark mr-1"></i> ປິດໜ້າຕ່າງ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Printable Area (Matches "view1.jpeg" precisely) -->
+            <div class="p-4 sm:p-8 bg-white overflow-x-auto">
+                <div id="print-area-container" class="mx-auto w-[800px] p-6 border-2 border-black bg-white text-black text-sm relative" style="font-family: 'Noto Sans Lao', sans-serif;">
+                    
+                    <!-- Decorative Top Header Borders -->
+                    <div class="flex items-center justify-between border-b-4 border-blue-600 pb-2 mb-4">
+                        <!-- School Logo Image: logo0000.jpg added here -->
+                        <div class="w-20 h-20 flex items-center justify-center overflow-hidden">
+                            <img src="logo0000.jpg" alt="HaaKKeo Logo" class="w-18 h-18 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/80x80/1e3a8a/ffffff?text=HaaKKeo'">
+                        </div>
+                        
+                        <!-- Country Name Banner -->
+                        <div class="text-center flex-grow px-2">
+                            <h4 class="font-bold text-[13px] uppercase tracking-wide leading-tight">ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</h4>
+                            <p class="text-[11px] leading-relaxed">ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</p>
+                        </div>
+                        
+                        <!-- Right spacing balancing emblem -->
+                        <div class="w-20 h-20"></div>
+                    </div>
+
+                    <!-- School Name and Academic Year Header -->
+                    <div class="flex justify-between items-baseline text-xs font-bold border-b border-black pb-1 mb-3">
+                        <span>ໂຮງຮຽນມັດທະຍົມສຶກສາສົມບູນ ຮາກແກ້ວ</span>
+                        <span id="card-academic-year">ສົກຮຽນ 2026-2027</span>
+                    </div>
+
+                    <!-- Title of Report -->
+                    <div class="text-center space-y-1 mb-4">
+                        <h2 class="text-base font-bold uppercase tracking-wide" id="card-report-title">ຄະແນນ ປະຈຳພາກຮຽນ I (ມັງກອນ)</h2>
+                        <p class="text-xs font-bold" id="card-class-title">ຫ້ອງ ມ. 5/1</p>
+                    </div>
+
+                    <!-- Main Combined Table (Contains student photo, name, and grades in exact "view1.jpeg" structure) -->
+                    <table class="w-full border-collapse border border-black mb-4 text-xs">
+                        <tbody>
+                            <!-- The Row spanning outer container -->
+                            <tr>
+                                <!-- Left Section: Roll No Column (Stretched Border) -->
+                                <td class="border border-black text-center align-middle font-bold p-2 w-10 text-sm" rowspan="13">
+                                    <div class="text-slate-400 text-[10px] uppercase font-semibold leading-none mb-1">ລ/ດ</div>
+                                    <span id="card-student-id" class="text-base font-bold">14</span>
+                                </td>
+
+                                <!-- Left Section: Avatar and Vertical Student Name Box -->
+                                <td class="border border-black p-3 text-center align-middle w-52" rowspan="13">
+                                    <div class="flex flex-col items-center justify-center gap-4 h-full">
+                                        <!-- Photo Frame -->
+                                        <div class="w-32 h-40 border border-slate-300 rounded overflow-hidden shadow-inner bg-slate-50 flex items-center justify-center">
+                                            <img id="card-student-photo" src="https://placehold.co/150x200/e2e8f0/475569?text=Student+ID" alt="Student Photo" class="w-full h-full object-cover">
+                                        </div>
+                                        <!-- Student Full Name Printed Bold -->
+                                        <div class="text-center">
+                                            <h3 class="font-extrabold text-sm text-slate-900 leading-tight" id="card-student-name">ທ້າວ ວິໄລສັກ ອຸປະໄຊ</h3>
+                                            <p class="text-[11px] text-slate-500 font-medium mt-1">ຊື່ຫຼິ້ນ: <span id="card-student-nickname" class="font-bold text-slate-800">ເນດ</span></p>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- Header of Grade Details Portion -->
+                                <td class="border border-black bg-slate-50 text-center font-bold p-1.5 w-10">ລ/ດ</td>
+                                <td class="border border-black bg-slate-50 text-center font-bold p-1.5 w-44">ວິຊາສອບເສັງ</td>
+                                <td class="border border-black bg-slate-50 text-center font-bold p-1.5 w-28" id="card-col-header-1">ຄະແນນສະເລ່ຍ</td>
+                                <td class="border border-black bg-slate-50 text-center font-bold p-1.5 w-28" id="card-col-header-2">ຄະແນນສອບເສັງ</td>
+                                <td class="border border-black bg-slate-50 text-center font-bold p-1.5 w-28" id="card-col-header-3">ຄະແນນສະເລ່ຍ</td>
+                            </tr>
+
+                            <!-- 12 Subject Rows (Filled dynamically in JS) -->
+                            <tr id="card-row-sub-1"><td class="border border-black text-center p-1">1</td><td class="border border-black p-1 font-semibold">ພາສາລາວ-ວັນນະຄະດີ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-2"><td class="border border-black text-center p-1">2</td><td class="border border-black p-1 font-semibold">ຄະນິດສາດ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-3"><td class="border border-black text-center p-1">3</td><td class="border border-black p-1 font-semibold">ສຶກສາພົນລະເມືອງ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-4"><td class="border border-black text-center p-1">4</td><td class="border border-black p-1 font-semibold">ຟີຊິກສາດ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-5"><td class="border border-black text-center p-1">5</td><td class="border border-black p-1 font-semibold">ເຄມີສາດ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-6"><td class="border border-black text-center p-1">6</td><td class="border border-black p-1 font-semibold">ຊີວະວິທະຍາ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-7"><td class="border border-black text-center p-1">7</td><td class="border border-black p-1 font-semibold">ພູມສາດ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-8"><td class="border border-black text-center p-1">8</td><td class="border border-black p-1 font-semibold">ປະຫວັດສາດ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-9"><td class="border border-black text-center p-1">9</td><td class="border border-black p-1 font-semibold">ICT</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-10"><td class="border border-black text-center p-1">10</td><td class="border border-black p-1 font-semibold">ພາສາອັງກິດ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-11"><td class="border border-black text-center p-1">11</td><td class="border border-black p-1 font-semibold">ພາສາຢີ່ປຸ່ນ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+                            <tr id="card-row-sub-12"><td class="border border-black text-center p-1">12</td><td class="border border-black p-1 font-semibold">ພະລະສຶກສາ</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td><td class="border border-black text-center p-1">-</td></tr>
+
+                            <!-- Sum and Average Footer inside Card Table -->
+                            <tr>
+                                <td colspan="2" class="border border-black text-right pr-4 font-bold p-1.5">ຄະແນນລວມ :</td>
+                                <td colspan="3" class="border border-black text-right pr-4 font-extrabold p-1.5" id="card-total-sum">0.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="border border-black text-right pr-4 font-bold p-1.5">ຄະແນນສະເລ່ຍ :</td>
+                                <td colspan="3" class="border border-black text-right pr-4 font-extrabold p-1.5 text-indigo-700" id="card-total-avg">0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Behavioral & Attendance Section (Synced to the editable columns) -->
+                    <div class="grid grid-cols-2 gap-x-8 text-[11px] mb-4 leading-relaxed border-t border-slate-100 pt-3">
+                        <div class="space-y-1">
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ນັກຮຽນທັງໝົດໃນຫ້ອງ :</span>
+                                <span class="font-bold"><span id="card-classroom-total">34</span> ຄົນ</span>
+                            </p>
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ລວມມື້ຂາດ :</span>
+                                <span class="font-bold"><span id="card-absent-days">0</span> ມື້ / <span id="card-unexcused-days">0</span> ມື້ ບໍ່ມີເຫດຜົນ</span>
+                            </p>
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ມາລະຍາດໃນຫ້ອງ :</span>
+                                <span class="font-bold" id="card-manner">ດີ</span>
+                            </p>
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ການກະກຽມອຸປະກອນມາໂຮງຮຽນ :</span>
+                                <span class="font-bold" id="card-preparation">ດີ</span>
+                            </p>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ຍິງ :</span>
+                                <span class="font-bold"><span id="card-classroom-girls">16</span> ຄົນ</span>
+                            </p>
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ການສົ່ງວຽກບ້ານ :</span>
+                                <span class="font-bold" id="card-homework">ດີ</span>
+                            </p>
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ຄະແນນຄຸນສົມບັດຄົງເຫຼືອ :</span>
+                                <span class="font-bold"><span id="card-conduct-score">600</span> ຄະແນນ</span>
+                            </p>
+                            <p class="flex justify-between border-b border-dashed border-slate-200">
+                                <span>ຄະແນນຖືກຕັດ :</span>
+                                <span class="font-bold"><span id="card-deducted-score">0</span> ຄະແນນ</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Teacher's Comment Section -->
+                    <div class="space-y-1 mb-3">
+                        <label class="font-bold text-xs block">ຄຳເຫັນຂອງຄູ :</label>
+                        <div class="border border-black p-3 bg-slate-50/50 min-h-[50px] relative rounded">
+                            <textarea id="card-teacher-comment" rows="2" class="w-full bg-transparent border-none text-xs focus:ring-0 resize-none font-medium leading-relaxed" placeholder="ພິມຄຳເຫັນຂອງຄູປະຈຳຫ້ອງໃສ່ບ່ອນນີ້..."></textarea>
+                            <span class="absolute bottom-1 right-1 text-[9px] text-slate-400 no-print" id="card-comment-editable-badge"><i class="fa-solid fa-pen mr-1"></i>ຄລິກແກ້ໄຂໄດ້ໂດຍກົງ</span>
+                        </div>
+                    </div>
+
+                    <!-- Parent's Comment Section -->
+                    <div class="space-y-1 mb-4">
+                        <label class="font-bold text-xs block">ຄຳເຫັນຂອງຜູ້ປົກຄອງ :</label>
+                        <div class="border border-black h-12 bg-white rounded"></div>
+                    </div>
+
+                    <!-- Bottom Signatures and Date Details -->
+                    <div class="text-center text-xs font-bold my-4">
+                        <span id="card-date-location">ທີ່ ໂຮງຮຽນ ມັດທະຍົມສຶກສາສົມບູນຮາກແກ້ວ, ວັນທີ 10 ກໍລະກົດ 2026</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 text-center text-xs font-bold pt-2 mb-10">
+                        <div class="space-y-12">
+                            <span>...ຜູ້ປົກຄອງ...</span>
+                            <div class="h-1"></div>
+                            <span class="block border-t border-dashed border-slate-400 w-36 mx-auto"></span>
+                        </div>
+                        <div class="space-y-4 relative">
+                            <span>ຄູປະຈຳຫ້ອງ</span>
+                            <!-- Mock signature mimicking manual handwriting -->
+                            <div class="h-10 flex items-center justify-center">
+                                <svg class="w-24 h-10 text-indigo-800" viewBox="0 0 100 40">
+                                    <path d="M 10 30 Q 30 10, 45 25 T 80 15 Q 90 10, 85 30 T 40 32" fill="none" stroke="currentColor" stroke-width="2.5" />
+                                </svg>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="block border-t border-dashed border-slate-400 w-36 mx-auto"></span>
+                                <span class="block text-slate-600 text-[11px]">ອາຈານ ທອງທິບ ແກ້ວອຸດົມ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Branding Info Footer -->
+                    <div class="border-t-2 border-blue-600 pt-2 flex flex-col sm:flex-row justify-between items-center text-[9px] text-slate-500 leading-normal">
+                        <div class="text-center sm:text-left">
+                            <p class="font-bold text-blue-900">ໂຮງຮຽນຮາກແກ້ວ ຈຳກັດ</p>
+                            <p>ຕັ້ງຢູ່ໜ່ວຍ 40, ບ້ານ ທົ່ງກາງ, ເມືອງ ສີສັດຕະນາກ, ນະຄອນຫຼວງວຽງຈັນ, ສ.ປ.ປ.ລາວ.</p>
+                        </div>
+                        <div class="text-center sm:text-right mt-1 sm:mt-0">
+                            <p>Tel: 021 315772, 315466-7 | Fax: 021 315773</p>
+                            <p>Email: Haakkeo.school@gmail.com</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Bottom Dismiss Bar -->
+            <div class="px-6 py-3 border-t border-slate-100 flex justify-end bg-slate-50 rounded-b-2xl">
+                <button onclick="closeStudentModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs px-5 py-2.5 rounded-xl transition">
+                    <i class="fa-solid fa-check mr-1.5"></i> ສຳເລັດແລ້ວ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 5: Student Directory Modal (HK5100 Exclusive) -->
+    <div id="view-student-directory-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 overflow-y-auto p-4 sm:p-6 md:p-10 flex justify-center items-start">
+        <div class="absolute inset-0 no-print" onclick="closeStudentDirectoryModal()"></div>
+        
+        <div class="bg-white rounded-2xl max-w-7xl w-full shadow-2xl border border-slate-200 relative z-10 flex flex-col no-print mb-10">
+            <!-- Header -->
+            <div class="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-50 rounded-t-2xl">
+                <div class="flex items-center gap-2">
+                    <span class="p-2.5 bg-indigo-100 text-indigo-800 rounded-xl"><i class="fa-solid fa-address-book text-lg"></i></span>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg">ທະບຽນປະຫວັດ ແລະ ຂໍ້ມູນຕິດຕໍ່ນັກຮຽນ ມ.5/1</h3>
+                        <p class="text-xs text-slate-400">ສະແດງຂໍ້ມູນທັງໝົດ 34 ຄົນ ຈາກໄຟລ໌ "ລາຍຊື່ນັກຮຽນ  ມ.5-1 2026-27.xlsx" (ຄລິກແກ້ໄຂໄດ້ໂດຍກົງ)</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                    <button onclick="addNewStudent()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>ເພີ່ມນັກຮຽນໃໝ່</span>
+                    </button>
+                    <button onclick="exportDirectoryToCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-excel"></i>
+                        <span>ດາວໂຫຼດ Excel (ຂໍ້ມູນຕິດຕໍ່)</span>
+                    </button>
+                    <button onclick="closeStudentDirectoryModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs px-3.5 py-2.5 rounded-xl transition">
+                        <i class="fa-solid fa-xmark mr-1"></i> ປິດ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Controls and Directory Table -->
+            <div class="p-6 space-y-4">
+                <!-- Search -->
+                <div class="relative w-full max-w-md">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="directory-search" oninput="filterDirectory()" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="ຄົ້ນຫານັກຮຽນດ້ວຍ ຊື່, ຊື່ຫຼິ້ນ, ລະຫັດ ຫຼື ເບີໂທ...">
+                </div>
+
+                <!-- Scrollable Container -->
+                <div class="bg-white rounded-xl border border-slate-100 overflow-hidden shadow-inner">
+                    <div class="overflow-x-auto table-scrollbar">
+                        <table class="w-full text-left border-collapse table-fixed min-w-[2000px]">
+                            <thead>
+                                <tr class="border-b border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold text-center">
+                                    <th class="py-3 px-2 w-12 sticky bg-slate-100 left-0 border-r border-slate-200 z-10">ລ/ດ</th>
+                                    <th class="py-3 px-4 w-60 text-left sticky bg-slate-100 left-12 border-r border-slate-200 z-10">ຊື່ ແລະ ນາມສະກຸນ (Lao)</th>
+                                    <th class="py-3 px-2 w-28 border-r border-slate-200">ຊື່ຫຼິ້ນ</th>
+                                    <th class="py-3 px-3 w-32 border-r border-slate-200">ຮູບປະຈຳໂຕ</th>
+                                    <th class="py-3 px-4 w-64 text-left border-r border-slate-200">Name (English)</th>
+                                    <th class="py-3 px-3 w-32 border-r border-slate-200">ລະຫັດ One Campus</th>
+                                    <th class="py-3 px-3 w-36 border-r border-slate-200">ວັນ,ເດືອນ,ປີເກີດ</th>
+                                    <th class="py-3 px-4 w-40 border-r border-slate-200">ເບີໂທລະສັບພໍ່</th>
+                                    <th class="py-3 px-4 w-40 border-r border-slate-200">ເບີໂທລະສັບແມ່</th>
+                                    <th class="py-3 px-3 w-32 border-r border-slate-200">ມາຈາກ ຮຮ</th>
+                                    <th class="py-3 px-3 w-32 border-r border-slate-200">ໝາຍເຫດ</th>
+                                    <th class="py-3 px-3 w-40">ຈັດການລຳດັບ / ລົບບັນຊີ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="directory-table-body" class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <!-- Populated dynamically by JS with inputs for inline editing -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-12 shadow-inner no-print">
+        <p class="mb-1">© 2026 ລະບົບຄຸ້ມຄອງຄະແນນຮຽນ ມ.5/1 | ພັດທະນາເພື່ອອຳນວຍຄວາມສະດວກໃຫ້ແກ່ ຄູ-ອາຈານ</p>
+        <p>ຈັດທຳໂດຍ: ອາຈານ ທອງທິບ ແກ້ວອຸດົມ</p>
+    </footer>
+
+    <!-- Toast notification system -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white py-3 px-5 rounded-xl shadow-2xl transition-all duration-300 translate-y-20 opacity-0 pointer-events-none flex items-center gap-2 text-sm z-50 no-print">
+        <span id="toast-icon" class="text-emerald-400"><i class="fa-solid fa-circle-check"></i></span>
+        <span id="toast-message">ບັນທຶກຂໍ້ມູນສຳເລັດ!</span>
+    </div>
+
+    <!-- Custom Confirmation Modal (Replaces unsafe confirm()) -->
+    <div id="confirm-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+        <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-100 p-6 space-y-4 scale-95 transition-transform duration-300">
+            <div class="flex items-start gap-3">
+                <div class="p-3 bg-amber-50 text-amber-600 rounded-full" id="confirm-modal-icon-bg">
+                    <i class="fa-solid fa-triangle-exclamation text-xl" id="confirm-modal-icon"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800" id="confirm-modal-title">ຢືນຢັນການດຳເນີນງານ</h3>
+                    <p class="text-sm text-slate-500 mt-1 leading-relaxed" id="confirm-modal-message">ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການດຳເນີນການນີ້?</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                <button id="confirm-modal-cancel" class="bg-slate-50 hover:bg-slate-100 text-slate-600 px-4 py-2 rounded-xl text-sm font-medium transition duration-150">ຍົກເລີກ</button>
+                <button id="confirm-modal-confirm" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition duration-150 shadow-md">ຢືນຢັນ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Area -->
+    <script>
+        // Load dynamic master student list from LocalStorage, otherwise fall back to default list
+        let students = JSON.parse(localStorage.getItem('m5_1_students_list_v2'));
+        
+        if (!students) {
+            students = [
+                { id: 1, name: "ທ້າວ ກິຕິກອນ ວົງຊະນິດ", nickname: "ກິຕິ", name_en: "Mr. Kitikone VONGSANITH", one_campus: "201072", birthdate: "09/05/2011", father_phone: "020-22223311", mother_phone: "020-29396699", origin_school: "-", remark: "-" },
+                { id: 2, name: "ນາງ ຄອນສະຫວັນ ແສງຄໍາເພັງໄຊ", nickname: "ແອັບຟິວ", name_en: "Ms. Khonesavanh SENGKHAMPHENGXAY", one_campus: "201062", birthdate: "02/04/2011", father_phone: "020-99902789", mother_phone: "020-55979881", origin_school: "-", remark: "-" },
+                { id: 3, name: "ທ້າວ ແສງ​ຕາ​ວັນ ສີ​ສົມ​ບັດ", nickname: "ເຕ​ໂຊ", name_en: "Sengtavanh SISOMBATH", one_campus: "252012", birthdate: "13/07/2011", father_phone: "020-55663668", mother_phone: "020-55717437", origin_school: "-", remark: "-" },
+                { id: 4, name: "ທ້າວ​ ສິນທະວີໄຊ ຈັນດາລາ", nickname: "ອາລັນ", name_en: "Sinthavixay CHANDALA", one_campus: "ບໍ່ມີ", birthdate: "03/04/2011", father_phone: "020-55881666", mother_phone: "020-55592168", origin_school: "ວັດທະນາ", remark: "-" },
+                { id: 5, name: "ທ້າວ ສຸກພະໂຊກ ສຸພະວົງ", nickname: "ອິກຄິວ", name_en: "Mr. Soukphasok SOUPHAVONG", one_campus: "201098", birthdate: "25/05/2012", father_phone: "020-55508829", mother_phone: "020-55416899", origin_school: "-", remark: "-" },
+                { id: 6, name: "ນາງ ສຸດາວັນ ວັນທານະວົງ", nickname: "ກະຕ່າຍ", name_en: "Ms. Soudavanh VANTANAVONG", one_campus: "222002", birthdate: "10/02/2012", father_phone: "-", mother_phone: "020-29831565", origin_school: "-", remark: "-" },
+                { id: 7, name: "ທ້າວ ສົງການ ທະວີສັກ", nickname: "ສົງການ", name_en: "Mr. Songkan THAVISACK", one_campus: "222008", birthdate: "06/04/2011", father_phone: "020-54527779", mother_phone: "020-55611979", origin_school: "-", remark: "-" },
+                { id: 8, name: "ທ້າວ ໄຊ​ເສດ​ຖາ ແສນ​ບຸດ​ຕະ​ລາດ", nickname: "ນິວ", name_en: "Saysetha SAENBOUTTALATH", one_campus: "252014", birthdate: "22/04/2011", father_phone: "020-22406855", mother_phone: "020-55555166", origin_school: "-", remark: "-" },
+                { id: 9, name: "ທ້າວ ໄຊຍະກອນ ດາລາວົງ", nickname: "ໄຊ", name_en: "Mr Xayyakone DALAVONG", one_campus: "222009", birthdate: "13/11/2011", father_phone: "020-55666661", mother_phone: "020-55888789", origin_school: "-", remark: "-" },
+                { id: 10, name: "ທ້າວ ດົນຍະກອນ ພົມມະຈັນ", nickname: "ມິນໂດ", name_en: "Mr. Donyakone PHOMMACHANE", one_campus: "252011", birthdate: "29/11/2011", father_phone: "020-55504701", mother_phone: "020-55878751", origin_school: "-", remark: "-" },
+                { id: 11, name: "ທ້າວ ຕິ໋ກກີ່ ໄຊຍະລາດ", nickname: "ຕິກກີ່", name_en: "Mr. Tikky XAYYALATH", one_campus: "232015", birthdate: "15/08/2011", father_phone: "020-55504702", mother_phone: "020-55878752", origin_school: "-", remark: "-" },
+                { id: 12, name: "ທ້າວ ໂຕນີ່ ຫຼວງອາໄສ", nickname: "ໂຕນີ່", name_en: "Mr. Tony LUANGASAI", one_campus: "201090", birthdate: "12/12/2011", father_phone: "020-55504703", mother_phone: "020-55878753", origin_school: "-", remark: "-" },
+                { id: 13, name: "ທ້າວ ทະນາຄອນ ສິຣິປັນຍາ", nickname: "ແບັງ", name_en: "Mr. Thanakhone SIRIPANYA", one_campus: "201103", birthdate: "13/10/2011", father_phone: "020-55504704", mother_phone: "020-55878754", origin_school: "-", remark: "-" },
+                { id: 14, name: "ນາງ ທິບພະເນດ ພອນປະເສີດ", nickname: "ເນດ", name_en: "Ms. Thipphanet PHONPASEUTH", one_campus: "201054", birthdate: "14/04/2011", father_phone: "020-55504705", mother_phone: "020-55878755", origin_school: "-", remark: "-" },
+                { id: 15, name: "ນາງ ທິພະສອນ ອິນທະວົງ", nickname: "ນ້ຳຝົນ", name_en: "Ms. Thiphasone INTHAVONG", one_campus: "201051", birthdate: "15/05/2011", father_phone: "020-55504706", mother_phone: "020-55878756", origin_school: "-", remark: "-" },
+                { id: 16, name: "ນາງ ນັດຖາ ພົມມະສຸວັນ", nickname: "ແນັດ", name_en: "Ms. Nattha PHOMMASOUVANH", one_campus: "242008", birthdate: "16/06/2011", father_phone: "020-55504707", mother_phone: "020-55878757", origin_school: "-", remark: "-" },
+                { id: 17, name: "ນາງ ນາລີລັດ ພອນປະເສີດ", nickname: "ແພຣ", name_en: "Ms. Naleerut PHONPASEUTH", one_campus: "201055", birthdate: "17/07/2011", father_phone: "020-55504708", mother_phone: "020-55878758", origin_school: "-", remark: "-" },
+                { id: 18, name: "ນາງ ນິລັນດາ ສີຫາລາດ", nickname: "ຫຼິ໋ງ", name_en: "Ms. Nilanda SINGHALATH", one_campus: "201083", birthdate: "18/08/2011", father_phone: "020-55504709", mother_phone: "020-55878759", origin_school: "-", remark: "-" },
+                { id: 19, name: "ນາງ ບຸນມີ ພິລາວັນ", nickname: "ມີມີ້", name_en: "Ms. Bounmy PHILAVANH", one_campus: "201077", birthdate: "19/09/2011", father_phone: "020-55504710", mother_phone: "020-55878760", origin_school: "-", remark: "-" },
+                { id: 20, name: "ທ້າວ ປັດທະມະວັນ ສິດທິເດດ", nickname: "ເຕີ", name_en: "Mr. Patthamavanh SITTHIDETH", one_campus: "201065", birthdate: "20/10/2011", father_phone: "020-55504711", mother_phone: "020-55878761", origin_school: "-", remark: "-" },
+                { id: 21, name: "ນາງ ປານິດາ ໄຊຍະທິສັກ", nickname: "ປານີ", name_en: "Ms. Panida XAYYATHISACK", one_campus: "201088", birthdate: "21/11/2011", father_phone: "020-55504712", mother_phone: "020-55878762", origin_school: "-", remark: "-" },
+                { id: 22, name: "ນາງ ປ່ຽມສຸກ ໄຊຍະວົງສາ", nickname: "ຮານີ", name_en: "Ms. Piamsouk XAYYAVONGSA", one_campus: "201087", birthdate: "22/12/2011", father_phone: "020-55504713", mother_phone: "020-55878763", origin_school: "-", remark: "-" },
+                { id: 23, name: "ທ້າວ ພອນສະຫວັນ ສຸລິວົງ", nickname: "ໂອວີ", name_en: "Mr. Phonsavanh SOULIVONG", one_campus: "201095", birthdate: "23/01/2011", father_phone: "020-55504714", mother_phone: "020-55878764", origin_school: "-", remark: "-" },
+                { id: 24, name: "ທ້າວ ພັດທະນະ ສິງຫາລາດ", nickname: "ພັດ", name_en: "Mr. Patthana SINGHALATH", one_campus: "242023", birthdate: "24/02/2011", father_phone: "020-55504715", mother_phone: "020-55878765", origin_school: "-", remark: "-" },
+                { id: 25, name: "ນາງ ເພັດສະໄໝ ພູມມະວົງ", nickname: "ໄໝ", name_en: "Ms. Phetsamai PHOUMMAVONG", one_campus: "222006", birthdate: "25/03/2011", father_phone: "020-55504716", mother_phone: "020-55878766", origin_school: "-", remark: "-" },
+                { id: 26, name: "ນາງ ມຸກດາວັນ ພິລາວັນ", nickname: "ມຸກ", name_en: "Ms. Moukdavan PHILAVANH", one_campus: "201076", birthdate: "26/04/2011", father_phone: "020-55504717", mother_phone: "020-55878767", origin_school: "-", remark: "-" },
+                { id: 27, name: "ນາງ ລິນດາ ປັນຍາສານ", nickname: "ຝົນທິບ", name_en: "Ms. Linda PANYHASANE", one_campus: "201058", birthdate: "19/10/2011", father_phone: "020-29680359", mother_phone: "020-55557646", origin_school: "-", remark: "-" },
+                { id: 28, name: "ນາງ ວິດາວັນ ນິລະວັນ", nickname: "ຕິ່ງນ່ອງ", name_en: "Ms. Vidavanh NILAVANH", one_campus: "232007", birthdate: "13/11/2011", father_phone: "020-58887778", mother_phone: "020-54888177", origin_school: "-", remark: "-" },
+                { id: 29, name: "ທ້າວ ວຽງນິລັນ ອິນທະພົມ", nickname: "ຕົ້ນກ້າ", name_en: "Mr. Viengnilanh INTHAPHOM", one_campus: "242018", birthdate: "11/06/2011", father_phone: "-", mother_phone: "020 55539192", origin_school: "-", remark: "-" },
+                { id: 30, name: "ທ້າວ ອານັນດາ ທິບວົງໄຊ", nickname: "ດີ່ໂນ້", name_en: "Mr. Anunda THIPVONGXAY", one_campus: "201067", birthdate: "29/01/2011", father_phone: "020-55504700", mother_phone: "020-55878756", origin_school: "-", remark: "-" },
+                { id: 31, name: "ນາງ ອາລິສາ ຣາຊະຈັກ", nickname: "ໃບຍົກ", name_en: "Ms. Alisa RASACHAK", one_campus: "201059", birthdate: "29/07/2011", father_phone: "-", mother_phone: "020-56412250", origin_school: "-", remark: "-" },
+                { id: 32, name: "ນາງ ອາລິສາ ພູນສະຫວັດ", nickname: "ໂດລ້າ", name_en: "Ms. Alisa PHOUNSAVATH", one_campus: "201084", birthdate: "06/11/2011", father_phone: "020-22225776", mother_phone: "020-22221242", origin_school: "-", remark: "-" },
+                { id: 33, name: "ທ້າວ ອິດທິສັກ ວັນນະຫົງ", nickname: "ນູ່ໂນ່", name_en: "Mr. Itthisack VANNAHONG", one_campus: "201064", birthdate: "23/06/2011", father_phone: "-", mother_phone: "020-59596444", origin_school: "-", remark: "-" },
+                { id: 34, name: "ນາງ ອຸໄທວັນ ມະຫາວັນ", nickname: "ອຸມອີມ", name_en: "Ms. Outhayvanh MAHAVANH", one_campus: "201053", birthdate: "04/12/2011", father_phone: "020-55627505", mother_phone: "020-55601057", origin_school: "-", remark: "-" }
+            ];
+            localStorage.setItem('m5_1_students_list_v2', JSON.stringify(students));
+        }
+
+        // Active evaluation periods
+        const periods = ['m9', 'm10', 'm11', 'm12', 's1', 'm2', 'm3', 'm4', 's2'];
+        
+        // Ordered active subjects list (12 subjects)
+        const subjects = {
+            lao: "ພາສາລາວ-ວັນນະຄະດີ",
+            math: "ຄະນິດສາດ",
+            civics: "ສຶກສາພົນລະເມືອງ",
+            physics: "ຟີຊິກສາດ",
+            chemistry: "ເຄມີສາດ",
+            biology: "ຊີວະວິທະຍາ",
+            geography: "ພູມສາດ",
+            history: "ປະຫວັດສາດ",
+            ict: "ICT",
+            english: "ພາສາອັງກິດ",
+            japanese: "ພາສາຢີ່ປຸ່ນ",
+            pe: "ພະລະສຶກສາ"
+        };
+
+        // Credential mappings to define exact system capabilities
+        const credentialRoles = {
+            "HK5100": { type: "homeroom", label: "ຄູປະຈຳຫ້ອງ (ອາຈານ ທອງທິບ)", subject: "all" },
+            "HK5101": { type: "subject", label: "ຄູສອນ: ພາສາລາວ", subject: "lao" },
+            "HK5102": { type: "subject", label: "ຄູສອນ: ຄະນິດສາດ", subject: "math" },
+            "HK5103": { type: "subject", label: "ຄູສອນ: ສຶກສາພົນລະເມືອງ", subject: "civics" },
+            "HK5104": { type: "subject", label: "ຄູສອນ: ຟີຊິກສາດ", subject: "physics" },
+            "HK5105": { type: "subject", label: "ຄູສອນ: ເຄມີສາດ", subject: "chemistry" },
+            "HK5106": { type: "subject", label: "ຄູສອນ: ຊີວະວິທະຍາ", subject: "biology" },
+            "HK5107": { type: "subject", label: "ຄູສອນ: ພູມສາດ", subject: "geography" },
+            "HK5108": { type: "subject", label: "ຄູສອນ: ປະຫວັດສາດ", subject: "history" },
+            "HK5109": { type: "subject", label: "ຄູສອນ: ICT", subject: "ict" },
+            "HK5110": { type: "subject", label: "ຄູສອນ: ພາສາອັງກິດ", subject: "english" },
+            "HK5111": { type: "subject", label: "ຄູສອນ: ພາສາຢີ່ປຸ່ນ", subject: "japanese" },
+            "HK5112": { type: "subject", label: "ຄູສອນ: ພະລະສຶກສາ", subject: "pe" }
+        };
+
+        // Struct: { [subject]: { [studentId]: { [period]: { class: '', exam: '' } } } }
+        let grades = {}; 
+        let currentSubject = 'lao'; // Default to first ordered subject
+        let currentFilter = 'all';
+        let currentView = 'login'; // Defaults to authorization flow
+        let selectedPeriod = 'm9'; // For the monthly multi-subject report
+
+        // Active session tracking state
+        let currentUserRole = null; // Stored user role state
+
+        // Dynamic behavior remarks state storage
+        let studentBehaviorMetadata = {};
+
+        // Authentication controllers
+        function handleLogin(event) {
+            event.preventDefault();
+            const codeInput = document.getElementById('login-code').value.trim().toUpperCase();
+            const errorAlert = document.getElementById('login-error');
+
+            if (credentialRoles[codeInput]) {
+                errorAlert.classList.add('hidden');
+                currentUserRole = credentialRoles[codeInput];
+                
+                // Keep session alive
+                sessionStorage.setItem('gradebook_active_role', JSON.stringify(currentUserRole));
+                
+                // Initialize Navbar and App elements view
+                document.getElementById('view-login').classList.add('hidden');
+                document.getElementById('app-navbar').classList.remove('hidden');
+                
+                updateNavbarAndPrivileges();
+                navigateTo('home');
+                showToast("🔓 ເຂົ້າສູ່ລະບົບສຳເລັດແລ້ວ!", "text-emerald-400");
+            } else {
+                errorAlert.classList.remove('hidden');
+                showToast("❌ ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ!", "text-red-400");
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('gradebook_active_role');
+            currentUserRole = null;
+            
+            // Clean interface
+            document.getElementById('app-navbar').classList.add('hidden');
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-monthly-overview').classList.add('hidden');
+            document.getElementById('view-subject-entry').classList.add('hidden');
+            document.getElementById('view-student-report-modal').classList.add('hidden');
+            document.getElementById('view-student-directory-modal').classList.add('hidden');
+            
+            document.getElementById('login-code').value = '';
+            document.getElementById('view-login').classList.remove('hidden');
+            currentView = 'login';
+            showToast("🔒 ອອກຈາກລະບົບຮຽບຮ້ອຍ!", "text-amber-400");
+        }
+
+        // Apply access rules dynamically across the DOM
+        function updateNavbarAndPrivileges() {
+            if (!currentUserRole) return;
+
+            // Render Navbar display badge
+            document.getElementById('navbar-role-display').innerText = currentUserRole.label;
+
+            // Homeroom teacher features toggler (HK5100 Specific checks)
+            const btnDemoFill = document.getElementById('btn-demo-fill');
+            const homeroomSection = document.getElementById('homeroom-exclusive-section');
+            
+            if (currentUserRole.type === 'homeroom') {
+                btnDemoFill.classList.remove('hidden');
+                homeroomSection.classList.remove('hidden');
+                homeroomSection.classList.add('block');
+                document.getElementById('behavior-permission-notice').classList.add('hidden');
+            } else {
+                btnDemoFill.classList.add('hidden');
+                homeroomSection.classList.add('hidden');
+                homeroomSection.classList.remove('block');
+                document.getElementById('behavior-permission-notice').classList.remove('hidden');
+            }
+
+            // Adjust interactive card visual indicators in dashboard grid
+            const subjectCards = document.querySelectorAll('.card-subject');
+            subjectCards.forEach(card => {
+                const subKey = card.getAttribute('data-subject');
+                const btn = card.querySelector('.btn-subject-card');
+                
+                if (currentUserRole.type === 'homeroom' || currentUserRole.subject === subKey) {
+                    card.classList.remove('opacity-50');
+                    btn.classList.remove('bg-slate-400', 'cursor-not-allowed');
+                    btn.classList.add('hover:shadow-md');
+                    btn.disabled = false;
+                } else {
+                    card.classList.add('opacity-50');
+                    btn.classList.add('bg-slate-400', 'cursor-not-allowed');
+                    btn.classList.remove('hover:shadow-md');
+                    btn.disabled = true;
+                }
+            });
+        }
+
+        // Privilege verification helpers
+        function hasSubjectEditPrivilege(subjectKey) {
+            if (!currentUserRole) return false;
+            return currentUserRole.type === 'homeroom' || currentUserRole.subject === subjectKey;
+        }
+
+        function hasBehaviorEditPrivilege() {
+            if (!currentUserRole) return false;
+            return currentUserRole.type === 'homeroom';
+        }
+
+        function recalculateConductScores(studentId) {
+            if (!studentBehaviorMetadata[studentId]) {
+                studentBehaviorMetadata[studentId] = {};
+            }
+            let remaining = 600;
+            // Chronological order: m9 -> m10 -> m11 -> m12 -> s1 -> m2 -> m3 -> m4 -> s2
+            const chronologicalPeriods = ['m9', 'm10', 'm11', 'm12', 's1', 'm2', 'm3', 'm4', 's2'];
+            
+            chronologicalPeriods.forEach(p => {
+                if (!studentBehaviorMetadata[studentId][p]) {
+                    // Populate with defaults if missing
+                    studentBehaviorMetadata[studentId][p] = {
+                        absent: 0,
+                        unexcused: 0,
+                        manner: "ດີ",
+                        prep: "ດີ",
+                        hw: "ດີ",
+                        conduct: remaining,
+                        deducted: 0,
+                        comment: ""
+                    };
+                }
+                let deducted = parseInt(studentBehaviorMetadata[studentId][p].deducted) || 0;
+                remaining -= deducted;
+                studentBehaviorMetadata[studentId][p].conduct = remaining;
+            });
+        }
+
+        // Navigation controller
+        function navigateTo(viewName) {
+            currentView = viewName;
+            
+            // Hide all views
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-monthly-overview').classList.add('hidden');
+            document.getElementById('view-subject-entry').classList.add('hidden');
+            
+            // Show target view
+            if (viewName === 'home') {
+                document.getElementById('view-home').classList.remove('hidden');
+                updateNavbarAndPrivileges();
+            } else if (viewName === 'monthly-overview') {
+                document.getElementById('view-monthly-overview').classList.remove('hidden');
+                renderMonthlyReport();
+            } else if (viewName === 'subject-entry') {
+                document.getElementById('view-subject-entry').classList.remove('hidden');
+                renderTable();
+                calculateStats();
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Open subject entry
+        function openSubjectEntry(subjectKey) {
+            // Check credentials privilege before loading the pane
+            if (!hasSubjectEditPrivilege(subjectKey)) {
+                showToast("⚠️ ທ່ານບໍ່ມີສິດໃນການປ້ອນຄະແນນວິຊານີ້!", "text-red-400");
+                return;
+            }
+
+            currentSubject = subjectKey;
+            document.getElementById('subject-select').value = subjectKey;
+            document.getElementById('current-subject-title').innerText = subjects[subjectKey];
+            navigateTo('subject-entry');
+        }
+
+        function handlePhotoUpload(index, file) {
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    // ສ້າງ Canvas ເພື່ອບີບອັດຮູບພາບໃຫ້ເປັນຂະໜາດ 150x200 ພໍດີກັບກາດຄະແນນ
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 150;
+                    canvas.height = 200;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, 150, 200);
+                    
+                    // ບີບອັດຄຸນນະພາບຮູບພາບ 70% ເພື່ອປະຢັດພື້ນທີ່ໃນ LocalStorage
+                    const base64 = canvas.toDataURL('image/jpeg', 0.7);
+                    
+                    students[index].photo = base64;
+                    saveStudentsAndRefresh();
+                    showToast("📸 ອັບໂຫຼດຮູບພາບນັກຮຽນສຳເລັດແລ້ວ!", "text-emerald-400");
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Student Directory Modals (HK5100 Homeroom Exclusives)
+        function openStudentDirectoryModal() {
+            if (!hasBehaviorEditPrivilege()) {
+                showToast("⚠️ ທ່ານບໍ່ມີສິດເບິ່ງຂໍ້ມູນທະບຽນນັກຮຽນ!", "text-red-400");
+                return;
+            }
+            document.getElementById('directory-search').value = '';
+            renderDirectoryTable();
+            document.getElementById('view-student-directory-modal').classList.remove('hidden');
+        }
+
+        function closeStudentDirectoryModal() {
+            document.getElementById('view-student-directory-modal').classList.add('hidden');
+        }
+
+        // Open monthly report card overview
+        function openMonthlyOverview(periodKey) {
+            selectedPeriod = periodKey;
+            
+            // Set monthly report header text
+            let pName = "";
+            if (periodKey === 'm9') pName = "ເດືອນ 9";
+            else if (periodKey === 'm10') pName = "ເດືອນ 10";
+            else if (periodKey === 'm11') pName = "ເດືອນ 11";
+            else if (periodKey === 'm12') pName = "ເດືອນ 12";
+            else if (periodKey === 's1') pName = "ສອບເສັງ ພາກຮຽນ I";
+            else if (periodKey === 'm2') pName = "ເດືອນ 2";
+            else if (periodKey === 'm3') pName = "ເດືອນ 3";
+            else if (periodKey === 'm4') pName = "ເດືອນ 4";
+            else if (periodKey === 's2') pName = "ສອບເສັງ ພາກຮຽນ II";
+            else if (periodKey === 'year') pName = "ຄະແນນສະເລ່ຍທັງປີ";
+            
+            document.getElementById('monthly-period-title').innerText = pName;
+            navigateTo('monthly-overview');
+        }
+
+        function initializeSystem() {
+            const savedGrades = localStorage.getItem('m5_1_lao_grades_v2');
+            if (savedGrades) {
+                grades = JSON.parse(savedGrades);
+            }
+
+            const savedBehavior = localStorage.getItem('m5_1_student_behavior_v2');
+            if (savedBehavior) {
+                studentBehaviorMetadata = JSON.parse(savedBehavior);
+            }
+            
+            // Ensure structures for all subjects are initialized
+            Object.keys(subjects).forEach(sub => {
+                verifySubjectGrades(sub);
+            });
+
+            // Trigger conduct recalculations on init for all students
+            students.forEach(student => {
+                recalculateConductScores(student.id);
+            });
+            
+            // Check for persistent session storage
+            const cachedRole = sessionStorage.getItem('gradebook_active_role');
+            if (cachedRole) {
+                currentUserRole = JSON.parse(cachedRole);
+                document.getElementById('view-login').classList.add('hidden');
+                document.getElementById('app-navbar').classList.remove('hidden');
+                updateNavbarAndPrivileges();
+                navigateTo('home');
+            } else {
+                navigateTo('login');
+            }
+        }
+
+        // Verify structure exists for current subject and all students
+        function verifySubjectGrades(subject) {
+            if (!grades[subject]) {
+                grades[subject] = {};
+            }
+            students.forEach(student => {
+                if (!grades[subject][student.id]) {
+                    grades[subject][student.id] = {};
+                }
+                periods.forEach(p => {
+                    if (!grades[subject][student.id][p]) {
+                        grades[subject][student.id][p] = { class: '', exam: '' };
+                    }
+                });
+            });
+        }
+
+        // Compute period average: (InClass + Exam) / 2
+        function getPeriodAvg(periodGrades) {
+            if (!periodGrades) return null;
+            const cls = parseFloat(periodGrades.class);
+            const exm = parseFloat(periodGrades.exam);
+            const hasCls = !isNaN(cls);
+            const hasExm = !isNaN(exm);
+            
+            if (hasCls && hasExm) return (cls + exm) / 2;
+            if (hasCls) return cls; 
+            if (hasExm) return exm;
+            return null; // Empty values
+        }
+
+        // Calculate Semester 1 Monthly Average: (Month 9 + Month 10 + Month 11 + Month 12) / 4
+        function getS1MonthlyAvg(studentId, subject) {
+            const sGrades = grades[subject][studentId];
+            if (!sGrades) return null;
+            
+            const m9 = getPeriodAvg(sGrades['m9']);
+            const m10 = getPeriodAvg(sGrades['m10']);
+            const m11 = getPeriodAvg(sGrades['m11']);
+            const m12 = getPeriodAvg(sGrades['m12']);
+            
+            let sum = 0;
+            let count = 0;
+            if (m9 !== null) { sum += m9; count++; }
+            if (m10 !== null) { sum += m10; count++; }
+            if (m11 !== null) { sum += m11; count++; }
+            if (m12 !== null) { sum += m12; count++; }
+            
+            if (count === 0) return null;
+            return sum / 4;
+        }
+
+        // Calculate Semester 2 Monthly Average: (Month 2 + Month 3 + Month 4) / 3
+        function getS2MonthlyAvg(studentId, subject) {
+            const sGrades = grades[subject][studentId];
+            if (!sGrades) return null;
+            
+            const m2 = getPeriodAvg(sGrades['m2']);
+            const m3 = getPeriodAvg(sGrades['m3']);
+            const m4 = getPeriodAvg(sGrades['m4']);
+            
+            let sum = 0;
+            let count = 0;
+            if (m2 !== null) { sum += m2; count++; }
+            if (m3 !== null) { sum += m3; count++; }
+            if (m4 !== null) { sum += m4; count++; }
+            
+            if (count === 0) return null;
+            return sum / 3;
+        }
+
+        // Calculate final Semester 1, Semester 2, and overall Year averages
+        function calculateStudentAverages(studentId, subjectKey = currentSubject) {
+            const sGrades = grades[subjectKey][studentId];
+            if (!sGrades) return { s1Avg: 0, s2Avg: 0, yearAvg: 0, s1MonthlyAvg: null, s2MonthlyAvg: null };
+
+            // Semester 1 Final Average = (S1 Monthly Avg + S1 Exam Score) / 2
+            const s1MonthlyAvg = getS1MonthlyAvg(studentId, subjectKey);
+            const s1Exam = parseFloat(sGrades['s1'].exam);
+            let s1Avg = 0;
+            
+            if (s1MonthlyAvg !== null && !isNaN(s1Exam)) {
+                s1Avg = (s1MonthlyAvg + s1Exam) / 2;
+            } else if (s1MonthlyAvg !== null) {
+                s1Avg = s1MonthlyAvg; 
+            }
+
+            // Semester 2 Final Average = (S2 Monthly Avg + S2 Exam Score) / 2
+            const s2MonthlyAvg = getS2MonthlyAvg(studentId, subjectKey);
+            const s2Exam = parseFloat(sGrades['s2'].exam);
+            let s2Avg = 0;
+            
+            if (s2MonthlyAvg !== null && !isNaN(s2Exam)) {
+                s2Avg = (s2MonthlyAvg + s2Exam) / 2;
+            } else if (s2MonthlyAvg !== null) {
+                s2Avg = s2MonthlyAvg;
+            }
+
+            // Yearly Average = (S1 Final Avg + S2 Final Avg) / 2
+            let yearAvg = 0;
+            if (s1Avg > 0 && s2Avg > 0) {
+                yearAvg = (s1Avg + s2Avg) / 2;
+            } else if (s1Avg > 0) {
+                yearAvg = s1Avg;
+            } else if (s2Avg > 0) {
+                yearAvg = s2Avg;
+            }
+
+            return { s1Avg, s2Avg, yearAvg, s1MonthlyAvg, s2MonthlyAvg };
+        }
+
+        // Map numeric scores to Lao educational grade metrics
+        function getGradeLabel(total) {
+            if (total >= 9.0) return { text: "ດີເລີດ (A)", color: "bg-emerald-100 text-emerald-800" };
+            if (total >= 8.0) return { text: "ດີຫຼາຍ (B+)", color: "bg-emerald-50 text-emerald-700" };
+            if (total >= 7.0) return { text: "ດີ (B)", color: "bg-indigo-100 text-indigo-800" };
+            if (total >= 6.5) return { text: "ຄາດໝາຍ (C+)", color: "bg-blue-100 text-blue-800" };
+            if (total >= 5.0) return { text: "ຄາດໝາຍ (C)", color: "bg-amber-100 text-amber-800" };
+            if (total > 0) return { text: "ອ່ອນ (F)", color: "bg-rose-100 text-rose-800" };
+            return { text: "ບໍ່ມີຂໍ້ມູນ", color: "bg-slate-100 text-slate-400" };
+        }
+
+        function getOrCreateStudentBehavior(studentId, period, rawAvg = 0) {
+            // Recalculate chain first
+            recalculateConductScores(studentId);
+
+            if (period === 'year') {
+                // Return accumulated year overview data
+                const s2State = studentBehaviorMetadata[studentId]['s2'] || { absent: 0, unexcused: 0, manner: "ດີ", prep: "ດີ", hw: "ດີ", conduct: 600, deducted: 0, comment: "" };
+                
+                let totalAbsent = 0;
+                let totalUnexcused = 0;
+                let totalDeducted = 0;
+                const activePeriods = ['m9', 'm10', 'm11', 'm12', 's1', 'm2', 'm3', 'm4', 's2'];
+                
+                activePeriods.forEach(p => {
+                    if (studentBehaviorMetadata[studentId][p]) {
+                        totalAbsent += parseInt(studentBehaviorMetadata[studentId][p].absent) || 0;
+                        totalUnexcused += parseInt(studentBehaviorMetadata[studentId][p].unexcused) || 0;
+                        totalDeducted += parseInt(studentBehaviorMetadata[studentId][p].deducted) || 0;
+                    }
+                });
+
+                return {
+                    absent: totalAbsent,
+                    unexcused: totalUnexcused,
+                    manner: s2State.manner,
+                    prep: s2State.prep,
+                    hw: s2State.hw,
+                    conduct: s2State.conduct, // Last monthly state carries final year conduct
+                    deducted: totalDeducted,
+                    comment: s2State.comment || "ຜົນການຮຽນຕະຫຼອດປີມີຄວາມສະໝໍ່າສະເໝີ."
+                };
+            }
+
+            if (!studentBehaviorMetadata[studentId]) {
+                studentBehaviorMetadata[studentId] = {};
+            }
+            if (!studentBehaviorMetadata[studentId][period]) {
+                let absent = 0, unexcused = 0, manner = "ດີ", prep = "ດີ", hw = "ດີ", conduct = 600, deducted = 0;
+                let comment = "";
+
+                if (rawAvg >= 9.0) {
+                    manner = "ດີເລີດ";
+                    comment = "ນັກຮຽນມີການຮຽນດີເລີດ, ເປັນແບບຢ່າງທີ່ດີໃຫ້ແກ່ໝູ່ເພື່ອນໃນຫ້ອງຮຽນ, ມີຄວາມຕັ້ງໃຈສູງຫຼາຍ.";
+                } else if (rawAvg >= 7.5) {
+                    manner = "ດີຫຼາຍ";
+                    comment = "ຜົນການຮຽນດີຫຼາຍ, ຕັ້ງໃຈຮຽນ ແລະ ສົ່ງວຽກບ້ານເປັນປະຈຳ, ຂໍໃຫ້ຮັກສາມູນເຊື້ອຄວາມດຸໝັ່ນນີ້ໄວ້.";
+                } else if (rawAvg >= 5.0) {
+                    manner = "ດີ";
+                    comment = "ຜົນການຮຽນປານກາງ, ມີຄວາມເອົາໃຈໃສ່ໃນການຮຽນດີ, ຄວນເພີ່ມທະວີຄວາມຕັ້ງໃຈຂຶ້ນຕື່ມໃນບາງວິຊາ.";
+                } else if (rawAvg > 0) {
+                    manner = "ປານກາງ";
+                    prep = "ປານກາງ";
+                    hw = "ປານກາງ";
+                    comment = "การຮຽນອ່ອນບາງວິຊາ, ຍັງຂາດຄວາມເອົາໃຈໃສ່ໃນການຮຽນ, ມັກວົນແຊວໃນເວລາຮຽນ.";
+                }
+
+                studentBehaviorMetadata[studentId][period] = { absent, unexcused, manner, prep, hw, conduct, deducted, comment };
+            }
+
+            // Always update calculations
+            recalculateConductScores(studentId);
+            return studentBehaviorMetadata[studentId][period];
+        }
+
+        // Update single behavior field and recalculate chains
+        function updateBehaviorField(studentId, period, field, value) {
+            if (selectedPeriod === 'year') return; // Year summaries are read-only
+            if (!hasBehaviorEditPrivilege()) return; // Lock qualitative edits to homeroom role
+
+            if (!studentBehaviorMetadata[studentId]) {
+                studentBehaviorMetadata[studentId] = {};
+            }
+            if (!studentBehaviorMetadata[studentId][period]) {
+                getOrCreateStudentBehavior(studentId, period, 5.0);
+            }
+            
+            // Format types
+            if (field === 'absent' || field === 'unexcused' || field === 'deducted' || field === 'conduct') {
+                studentBehaviorMetadata[studentId][period][field] = parseInt(value) || 0;
+            } else {
+                studentBehaviorMetadata[studentId][period][field] = value;
+            }
+
+            // Chain calculation on deduction updates
+            if (field === 'deducted') {
+                recalculateConductScores(studentId);
+            }
+
+            localStorage.setItem('m5_1_student_behavior_v2', JSON.stringify(studentBehaviorMetadata));
+            
+            // Quick refresh computed conduct cells
+            if (currentView === 'monthly-overview') {
+                renderMonthlyReport();
+            }
+        }
+
+        function renderMonthlyReport() {
+            const tableHeader = document.getElementById('monthly-report-header');
+            const tableBody = document.getElementById('monthly-report-body');
+            const searchVal = document.getElementById('report-search').value.trim().toLowerCase();
+            const isYearView = selectedPeriod === 'year';
+            const canEditBehaviorData = hasBehaviorEditPrivilege() && !isYearView;
+            
+            // Build Labels depending on selected period
+            let subLabel1 = "ໃນຫ້ອງ";
+            let subLabel2 = "ເສັງ";
+            let subLabel3 = "ສະເລ່ຍ";
+            
+            if (selectedPeriod === 's1' || selectedPeriod === 's2') {
+                subLabel1 = "ສະເລ່ຍ ພຮ";
+                subLabel2 = "ເສັງພາກ";
+                subLabel3 = "ສຸດທ້າຍ";
+            } else if (selectedPeriod === 'year') {
+                subLabel1 = "ສະເລ່ຍ ພຮ 1";
+                subLabel2 = "ສະເລ່ຍ ພຮ 2";
+                subLabel3 = "ສະເລ່ຍທັງປີ";
+            }
+
+            // 1. Render Table Header dynamically using configured subjects (12 subjects)
+            let headerHtml = `
+                <!-- Row 1: Main Headers -->
+                <tr class="border-b border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold text-center">
+                    <th rowspan="2" class="py-4 px-2 w-12 sticky-header-1 bg-slate-100 border-r border-slate-200">ລ/ດ</th>
+                    <th rowspan="2" class="py-4 px-4 w-60 text-left sticky-header-2 bg-slate-100 border-r border-slate-200">ຊື່ ແລະ ນາມສະກຸນ</th>
+                    <th rowspan="2" class="py-4 px-2 w-28 border-r border-slate-200 sticky-header-3 bg-slate-100">ຊື່ຫຼິ້ນ</th>
+            `;
+
+            // Loop through each of the 12 subjects in exact configured order
+            Object.keys(subjects).forEach(subKey => {
+                let colorClass = "bg-blue-50/50 text-blue-900";
+                if (subKey === 'lao') colorClass = "bg-amber-50/50 text-amber-900";
+                else if (subKey === 'math') colorClass = "bg-blue-50/50 text-blue-900";
+                else if (subKey === 'civics') colorClass = "bg-red-50/50 text-red-900";
+                else if (subKey === 'physics') colorClass = "bg-purple-50/50 text-purple-900";
+                else if (subKey === 'chemistry') colorClass = "bg-rose-50/50 text-rose-900";
+                else if (subKey === 'biology') colorClass = "bg-teal-50/50 text-teal-900";
+                else if (subKey === 'geography') colorClass = "bg-sky-50/50 text-sky-900";
+                else if (subKey === 'history') colorClass = "bg-orange-50/50 text-orange-900";
+                else if (subKey === 'ict') colorClass = "bg-indigo-50/50 text-indigo-900";
+                else if (subKey === 'english') colorClass = "bg-emerald-50/50 text-emerald-900";
+                else if (subKey === 'japanese') colorClass = "bg-fuchsia-50/50 text-fuchsia-900";
+                else if (subKey === 'pe') colorClass = "bg-lime-50/50 text-lime-900";
+
+                headerHtml += `
+                    <th colspan="3" class="${colorClass} border-r border-slate-200 py-3">${subjects[subKey]}</th>
+                `;
+            });
+
+            headerHtml += `
+                    <th rowspan="2" class="py-4 px-2 w-28 bg-indigo-50 text-indigo-950 font-bold border-r border-slate-200">ຄະແນນລວມ</th>
+                    <th rowspan="2" class="py-4 px-2 w-28 bg-indigo-150 text-indigo-950 font-bold border-r border-slate-200">ຄະແນນສະເລ່ຍ</th>
+                    
+                    <!-- Added 7 Behavior Data Entry Headers -->
+                    <th rowspan="2" class="py-4 px-2 w-24 bg-slate-200 text-slate-800 font-bold border-r border-slate-300">ລວມວັນຂາດ</th>
+                    <th rowspan="2" class="py-4 px-2 w-28 bg-slate-200 text-slate-800 font-bold border-r border-slate-300">ຂາດບໍ່ມີເຫດຜົນ</th>
+                    <th rowspan="2" class="py-4 px-2 w-28 bg-slate-200 text-slate-800 font-bold border-r border-slate-300">ມາລະຍາດ</th>
+                    <th rowspan="2" class="py-4 px-2 w-32 bg-slate-200 text-slate-800 font-bold border-r border-slate-300">ການກະກຽມອຸປະກອນ</th>
+                    <th rowspan="2" class="py-4 px-2 w-28 bg-slate-200 text-slate-800 font-bold border-r border-slate-300">ການສົ່ງວຽກບ້ານ</th>
+                    <th rowspan="2" class="py-4 px-2 w-28 bg-slate-200 text-slate-800 font-bold border-r border-slate-300">ຄະແນນຖືກຕັດ</th>
+                    <th rowspan="2" class="py-4 px-2 w-32 bg-slate-200 text-slate-800 font-bold border-r border-slate-300">ຄຸນສົມບັດຄົງເຫຼືອ</th>
+                    
+                    <th rowspan="2" class="py-4 px-2 w-24 bg-slate-300 text-slate-800 font-bold">ລາຍລະອຽດ</th>
+                </tr>
+                <!-- Row 2: Sub Headers -->
+                <tr class="border-b border-slate-200 bg-slate-50 text-slate-500 text-[10px] font-bold text-center">
+            `;
+
+            // Repeat 3 subheaders for all active subjects (12 subjects)
+            Object.keys(subjects).forEach(() => {
+                headerHtml += `
+                    <th class="py-2 px-1 w-16 bg-slate-50">${subLabel1}</th>
+                    <th class="py-2 px-1 w-16 bg-slate-100">${subLabel2}</th>
+                    <th class="py-2 px-1 w-16 bg-slate-150 border-r border-slate-200 font-bold text-slate-700">${subLabel3}</th>
+                `;
+            });
+            headerHtml += `</tr>`;
+            tableHeader.innerHTML = headerHtml;
+
+            // 2. Render Student Rows using the sequence index + 1 as visible sequence
+            tableBody.innerHTML = '';
+            students.forEach((student, index) => {
+                if (searchVal !== '' && !student.name.toLowerCase().includes(searchVal)) {
+                    return;
+                }
+
+                const row = document.createElement('tr');
+                row.className = "hover:bg-slate-50/50 transition duration-150 border-b border-slate-100 text-center text-[11px]";
+
+                let rowHtml = `
+                    <td class="py-3 px-2 text-center font-medium text-slate-400 sticky-col-1 bg-white">${index + 1}</td>
+                    <td class="py-3 px-4 sticky-col-2 bg-white text-left font-bold text-slate-800">
+                        <div class="truncate w-52">${student.name}</div>
+                    </td>
+                    <td class="py-3 px-2 sticky-col-3 bg-white font-medium text-slate-700 border-r border-slate-200">
+                        ${student.nickname || '-'}
+                    </td>
+                `;
+
+                let totalSum = 0;
+
+                // Loop through all 12 configured subjects
+                Object.keys(subjects).forEach(subKey => {
+                    const sGrades = grades[subKey][student.id];
+                    const { s1Avg, s2Avg, yearAvg, s1MonthlyAvg, s2MonthlyAvg } = calculateStudentAverages(student.id, subKey);
+
+                    let val1 = '-';
+                    let val2 = '-';
+                    let val3 = '-';
+                    let rawVal3 = null;
+
+                    if (selectedPeriod === 'year') {
+                        val1 = s1Avg > 0 ? s1Avg.toFixed(1) : '-';
+                        val2 = s2Avg > 0 ? s2Avg.toFixed(1) : '-';
+                        val3 = yearAvg > 0 ? yearAvg.toFixed(1) : '-';
+                        rawVal3 = yearAvg > 0 ? yearAvg : null;
+                    } else if (selectedPeriod === 's1') {
+                        const examVal = parseFloat(sGrades['s1'].exam);
+                        val1 = s1MonthlyAvg !== null ? s1MonthlyAvg.toFixed(1) : '-';
+                        val2 = !isNaN(examVal) ? examVal.toFixed(1) : '-';
+                        val3 = s1Avg > 0 ? s1Avg.toFixed(1) : '-';
+                        rawVal3 = s1Avg > 0 ? s1Avg : null;
+                    } else if (selectedPeriod === 's2') {
+                        const examVal = parseFloat(sGrades['s2'].exam);
+                        val1 = s2MonthlyAvg !== null ? s2MonthlyAvg.toFixed(1) : '-';
+                        val2 = !isNaN(examVal) ? examVal.toFixed(1) : '-';
+                        val3 = s2Avg > 0 ? s2Avg.toFixed(1) : '-';
+                        rawVal3 = s2Avg > 0 ? s2Avg : null;
+                    } else {
+                        const periodData = sGrades[selectedPeriod];
+                        const cVal = parseFloat(periodData.class);
+                        const eVal = parseFloat(periodData.exam);
+                        const pAvg = getPeriodAvg(periodData);
+
+                        val1 = !isNaN(cVal) ? cVal.toFixed(1) : '-';
+                        val2 = !isNaN(eVal) ? eVal.toFixed(1) : '-';
+                        val3 = pAvg !== null ? pAvg.toFixed(1) : '-';
+                        rawVal3 = pAvg;
+                    }
+
+                    let color1 = val1 !== '-' ? (parseFloat(val1) >= 5.0 ? "text-slate-600" : "text-rose-500 font-medium") : "text-slate-300";
+                    let color2 = val2 !== '-' ? (parseFloat(val2) >= 5.0 ? "text-slate-600" : "text-rose-500 font-medium") : "text-slate-300";
+                    let color3 = val3 !== '-' ? (parseFloat(val3) >= 5.0 ? "text-indigo-600 font-bold" : "text-rose-600 font-bold") : "text-slate-300";
+
+                    rowHtml += `
+                        <td class="py-3 px-1 ${color1}">${val1}</td>
+                        <td class="py-3 px-1 ${color2}">${val2}</td>
+                        <td class="py-3 px-1 bg-slate-50/50 border-r border-slate-200 ${color3}">${val3}</td>
+                    `;
+
+                    if (rawVal3 !== null && rawVal3 > 0) {
+                        totalSum += rawVal3;
+                    }
+                });
+
+                // Compute student's cumulative sum and average (Sum / 12) across all 12 subjects
+                const totalSumFormatted = totalSum > 0 ? totalSum.toFixed(1) : '-';
+                const avgOfAll = totalSum > 0 ? (totalSum / 12) : 0;
+                const avgOfAllFormatted = avgOfAll > 0 ? avgOfAll.toFixed(2) : '-';
+                const avgColor = avgOfAll >= 5.0 ? "text-indigo-700 font-extrabold" : (avgOfAll > 0 ? "text-rose-650 font-extrabold" : "text-slate-300");
+
+                // Get dynamic behavior object
+                const behavior = getOrCreateStudentBehavior(student.id, selectedPeriod, avgOfAll);
+                
+                // Toggle edit availability depending on active user credentials
+                const canEditRowBehavior = canEditBehaviorData;
+                const disabledAttr = canEditRowBehavior ? '' : 'disabled';
+                const inputBg = canEditRowBehavior ? 'bg-white' : 'bg-slate-150/50 cursor-not-allowed';
+
+                // Add editable input and select cells for qualitative parameters
+                rowHtml += `
+                    <td class="py-3 px-2 bg-indigo-50/30 font-bold text-sm text-slate-800 border-r border-slate-200">
+                        ${totalSumFormatted}
+                    </td>
+                    <td class="py-3 px-2 bg-indigo-100/30 font-extrabold text-sm border-r border-slate-200 ${avgColor}">
+                        ${avgOfAllFormatted}
+                    </td>
+                    
+                    <!-- Editable Conduct / Attendance Columns -->
+                    <td class="p-1 bg-slate-50 border-r border-slate-200">
+                        <input type="number" value="${behavior.absent}" ${disabledAttr}
+                            oninput="updateBehaviorField(${student.id}, '${selectedPeriod}', 'absent', this.value)" 
+                            class="w-full ${inputBg} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                    </td>
+                    <td class="p-1 bg-slate-50 border-r border-slate-200">
+                        <input type="number" value="${behavior.unexcused}" ${disabledAttr}
+                            oninput="updateBehaviorField(${student.id}, '${selectedPeriod}', 'unexcused', this.value)" 
+                            class="w-full ${inputBg} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                    </td>
+                    <td class="p-1 bg-slate-50 border-r border-slate-200">
+                        <select onchange="updateBehaviorField(${student.id}, '${selectedPeriod}', 'manner', this.value)" ${disabledAttr}
+                            class="w-full ${inputBg} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                            <option value="ດີເລີດ" ${behavior.manner === 'ດີເລີດ' ? 'selected' : ''}>ດີເລີດ</option>
+                            <option value="ດີຫຼາຍ" ${behavior.manner === 'ດີຫຼາຍ' ? 'selected' : ''}>ດີຫຼາຍ</option>
+                            <option value="ດີ" ${behavior.manner === 'ດີ' ? 'selected' : ''}>ດີ</option>
+                            <option value="ປານກາງ" ${behavior.manner === 'ປານກາງ' ? 'selected' : ''}>ປານກາງ</option>
+                            <option value="ອ່ອນ" ${behavior.manner === 'ອ່ອນ' ? 'selected' : ''}>ອ່ອນ</option>
+                        </select>
+                    </td>
+                    <td class="p-1 bg-slate-50 border-r border-slate-200">
+                        <select onchange="updateBehaviorField(${student.id}, '${selectedPeriod}', 'prep', this.value)" ${disabledAttr}
+                            class="w-full ${inputBg} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                            <option value="ດີເລີດ" ${behavior.prep === 'ດີເລີດ' ? 'selected' : ''}>ດີເລີດ</option>
+                            <option value="ດີຫຼາຍ" ${behavior.prep === 'ດີຫຼາຍ' ? 'selected' : ''}>ດີຫຼາຍ</option>
+                            <option value="ດີ" ${behavior.prep === 'ດີ' ? 'selected' : ''}>ດີ</option>
+                            <option value="ປານກາງ" ${behavior.prep === 'ປານກາງ' ? 'selected' : ''}>ປານກາງ</option>
+                            <option value="ອ່ອນ" ${behavior.prep === 'ອ່ອນ' ? 'selected' : ''}>ອ່ອນ</option>
+                        </select>
+                    </td>
+                    <td class="p-1 bg-slate-50 border-r border-slate-200">
+                        <select onchange="updateBehaviorField(${student.id}, '${selectedPeriod}', 'hw', this.value)" ${disabledAttr}
+                            class="w-full ${inputBg} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                            <option value="ດີເລີດ" ${behavior.hw === 'ດີເລີດ' ? 'selected' : ''}>ດີເລີດ</option>
+                            <option value="ດີຫຼາຍ" ${behavior.hw === 'ດີຫຼາຍ' ? 'selected' : ''}>ດີຫຼາຍ</option>
+                            <option value="ດີ" ${behavior.hw === 'ດີ' ? 'selected' : ''}>ດີ</option>
+                            <option value="ປານກາງ" ${behavior.hw === 'ປານກາງ' ? 'selected' : ''}>ປານກາງ</option>
+                            <option value="ອ່ອນ" ${behavior.hw === 'ອ່ອນ' ? 'selected' : ''}>ອ່ອນ</option>
+                        </select>
+                    </td>
+                    <td class="p-1 bg-slate-50 border-r border-slate-200">
+                        <input type="number" value="${behavior.deducted}" ${disabledAttr}
+                            oninput="updateBehaviorField(${student.id}, '${selectedPeriod}', 'deducted', this.value)" 
+                            class="w-full ${inputBg} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                    </td>
+                    <td class="p-1 bg-slate-50 border-r border-slate-200">
+                        <!-- Conduct score is read-only because it calculates automatically -->
+                        <input type="number" value="${behavior.conduct}" disabled 
+                            class="w-full bg-indigo-50/50 border border-indigo-100 rounded p-1 text-center text-xs font-bold text-indigo-900">
+                    </td>
+
+                    <td class="py-3 px-2 bg-slate-50">
+                        <button onclick="openStudentReportCardModal(${student.id}, ${index + 1})" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1 rounded-lg text-xs transition shadow-sm flex items-center gap-1 mx-auto">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>View</span>
+                        </button>
+                    </td>
+                `;
+
+                row.innerHTML = rowHtml;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Filter search on Monthly Multi-Subject Report
+        function filterReportStudents() {
+            renderMonthlyReport();
+        }
+
+        function renderTable() {
+            const tableBody = document.getElementById('student-table-body');
+            const searchQuery = document.getElementById('search-bar').value.trim().toLowerCase();
+            tableBody.innerHTML = '';
+
+            const isSubjectEditable = hasSubjectEditPrivilege(currentSubject);
+            const inputBgClass = isSubjectEditable ? 'bg-white' : 'bg-slate-150/50 cursor-not-allowed';
+            const disabledAttr = isSubjectEditable ? '' : 'disabled';
+
+            // Show permission warning if locked
+            const permBadge = document.getElementById('subject-permission-badge');
+            if (isSubjectEditable) {
+                permBadge.classList.add('hidden');
+                document.getElementById('btn-save-grades').classList.remove('hidden');
+                document.getElementById('btn-clear-grades').classList.remove('hidden');
+            } else {
+                permBadge.classList.remove('hidden');
+                document.getElementById('btn-save-grades').classList.add('hidden');
+                document.getElementById('btn-clear-grades').classList.add('hidden');
+            }
+
+            students.forEach((student, index) => {
+                // Search Filter
+                if (searchQuery !== '' && !student.name.toLowerCase().includes(searchQuery)) {
+                    return;
+                }
+
+                const sGrades = grades[currentSubject][student.id];
+                const { s1Avg, s2Avg, yearAvg, s1MonthlyAvg, s2MonthlyAvg } = calculateStudentAverages(student.id);
+
+                // Pass / Fail filtering
+                if (currentFilter === 'passed' && yearAvg < 5.0) return;
+                if (currentFilter === 'failed' && (yearAvg >= 5.0 || yearAvg === 0)) return;
+
+                const gradeLabel = getGradeLabel(yearAvg);
+
+                const row = document.createElement('tr');
+                row.className = "hover:bg-slate-50/50 transition duration-150 border-b border-slate-100 text-xs";
+
+                // Base Student details using sequence index + 1
+                let rowHtml = `
+                    <td class="py-3 px-2 text-center font-medium text-slate-400 sticky-col-1 bg-white">${index + 1}</td>
+                    <td class="py-3 px-4 sticky-col-2 bg-white">
+                        <div class="font-bold text-slate-800 truncate w-52">${student.name}</div>
+                    </td>
+                    <td class="py-3 px-2 text-center sticky-col-3 bg-white border-r border-slate-200 font-medium text-slate-700">
+                        ${student.nickname || '-'}
+                    </td>
+                `;
+
+                // Render Month 9, 10, 11, 12
+                const monthlyPeriods1 = ['m9', 'm10', 'm11', 'm12'];
+                monthlyPeriods1.forEach(p => {
+                    const periodData = sGrades[p] || { class: '', exam: '' };
+                    const periodAvg = getPeriodAvg(periodData);
+                    const avgDisplay = periodAvg !== null ? periodAvg.toFixed(1) : '-';
+                    const avgColor = periodAvg >= 5.0 ? 'text-indigo-600 font-bold' : (periodAvg !== null ? 'text-rose-500 font-bold' : 'text-slate-300');
+
+                    rowHtml += `
+                        <td class="p-1 text-center bg-slate-50/10">
+                            <input type="number" min="0" max="10" step="any" value="${periodData.class}" ${disabledAttr}
+                                oninput="updateScore(${student.id}, '${p}', 'class', this.value)" 
+                                class="w-12 ${inputBgClass} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                        </td>
+                        <td class="p-1 text-center bg-slate-50/10">
+                            <input type="number" min="0" max="10" step="any" value="${periodData.exam}" ${disabledAttr}
+                                oninput="updateScore(${student.id}, '${p}', 'exam', this.value)" 
+                                class="w-12 ${inputBgClass} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                        </td>
+                        <td class="p-1 text-center bg-slate-100/30 border-r border-slate-200">
+                            <span id="avg-${student.id}-${p}" class="text-xs ${avgColor}">${avgDisplay}</span>
+                        </td>
+                    `;
+                });
+
+                // Semester 1 Exam Columns
+                const s1Color = s1Avg >= 5.0 ? 'text-indigo-600 font-bold' : (s1Avg > 0 ? 'text-rose-500 font-bold' : 'text-slate-300');
+                rowHtml += `
+                    <td class="p-1 text-center bg-violet-100/40 font-bold text-indigo-700" id="s1-monthly-val-${student.id}">
+                        ${s1MonthlyAvg !== null ? s1MonthlyAvg.toFixed(1) : '-'}
+                    </td>
+                    <td class="p-1 text-center bg-violet-50/20">
+                        <input type="number" min="0" max="10" step="any" value="${sGrades['s1'].exam}" ${disabledAttr}
+                            oninput="updateScore(${student.id}, 's1', 'exam', this.value)" 
+                            class="w-12 ${inputBgClass} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                    </td>
+                    <td class="p-1 text-center bg-violet-100/30 border-r-2 border-violet-300">
+                        <span id="avg-${student.id}-s1" class="text-xs ${s1Color}">${s1Avg > 0 ? s1Avg.toFixed(1) : '-'}</span>
+                    </td>
+                `;
+
+                // Render Month 2, 3, 4
+                const monthlyPeriods2 = ['m2', 'm3', 'm4'];
+                monthlyPeriods2.forEach(p => {
+                    const periodData = sGrades[p] || { class: '', exam: '' };
+                    const periodAvg = getPeriodAvg(periodData);
+                    const avgDisplay = periodAvg !== null ? periodAvg.toFixed(1) : '-';
+                    const avgColor = periodAvg >= 5.0 ? 'text-indigo-600 font-bold' : (periodAvg !== null ? 'text-rose-500 font-bold' : 'text-slate-300');
+
+                    rowHtml += `
+                        <td class="p-1 text-center bg-slate-50/10">
+                            <input type="number" min="0" max="10" step="any" value="${periodData.class}" ${disabledAttr}
+                                oninput="updateScore(${student.id}, '${p}', 'class', this.value)" 
+                                class="w-12 ${inputBgClass} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                        </td>
+                        <td class="p-1 text-center bg-slate-50/10">
+                            <input type="number" min="0" max="10" step="any" value="${periodData.exam}" ${disabledAttr}
+                                oninput="updateScore(${student.id}, '${p}', 'exam', this.value)" 
+                                class="w-12 ${inputBgClass} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                        </td>
+                        <td class="p-1 text-center bg-slate-100/30 border-r border-slate-200">
+                            <span id="avg-${student.id}-${p}" class="text-xs ${avgColor}">${avgDisplay}</span>
+                        </td>
+                    `;
+                });
+
+                // Semester 2 Exam Columns
+                const s2Color = s2Avg >= 5.0 ? 'text-emerald-600 font-bold' : (s2Avg > 0 ? 'text-rose-500 font-bold' : 'text-slate-300');
+                rowHtml += `
+                    <td class="p-1 text-center bg-teal-100/40 font-bold text-teal-700" id="s2-monthly-val-${student.id}">
+                        ${s2MonthlyAvg !== null ? s2MonthlyAvg.toFixed(1) : '-'}
+                    </td>
+                    <td class="p-1 text-center bg-teal-50/20">
+                        <input type="number" min="0" max="10" step="any" value="${sGrades['s2'].exam}" ${disabledAttr}
+                            oninput="updateScore(${student.id}, 's2', 'exam', this.value)" 
+                            class="w-12 ${inputBgClass} border border-slate-200 rounded p-1 text-center text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800">
+                    </td>
+                    <td class="p-1 text-center bg-teal-100/30 border-r-2 border-teal-300">
+                        <span id="avg-${student.id}-s2" class="text-xs ${s2Color}">${s2Avg > 0 ? s2Avg.toFixed(1) : '-'}</span>
+                    </td>
+                `;
+
+                // Cumulative statistics columns
+                const yearColor = yearAvg >= 5.0 ? 'text-indigo-700 font-extrabold' : (yearAvg > 0 ? 'text-rose-600 font-extrabold' : 'text-slate-300');
+
+                rowHtml += `
+                    <td class="py-3 px-1 text-center bg-amber-50/20 border-r border-slate-200 font-medium">
+                        <span id="s1-avg-${student.id}" class="text-xs ${s1Color}">${s1Avg > 0 ? s1Avg.toFixed(1) : '-'}</span>
+                    </td>
+                    <td class="py-3 px-1 text-center bg-amber-50/20 border-r border-slate-200 font-medium">
+                        <span id="s2-avg-${student.id}" class="text-xs ${s2Color}">${s2Avg > 0 ? s2Avg.toFixed(1) : '-'}</span>
+                    </td>
+                    <td class="py-3 px-1 text-center bg-amber-100/40 border-r border-slate-200 font-bold">
+                        <span id="year-avg-${student.id}" class="text-sm ${yearColor}">${yearAvg > 0 ? yearAvg.toFixed(1) : '-'}</span>
+                    </td>
+                    <td class="py-3 px-2 text-center">
+                        <span id="grade-${student.id}" class="px-2 py-0.5 text-[10px] font-bold rounded-full ${gradeLabel.color}">
+                            ${gradeLabel.text}
+                        </span>
+                    </td>
+                `;
+
+                row.innerHTML = rowHtml;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Score update triggered on input
+        function updateScore(studentId, period, field, value) {
+            if (!hasSubjectEditPrivilege(currentSubject)) return; // Prevent raw inject updates
+
+            let val = parseFloat(value);
+            
+            if (isNaN(val)) {
+                grades[currentSubject][studentId][period][field] = '';
+            } else {
+                if (val < 0) val = 0;
+                if (val > 10) val = 10;
+                grades[currentSubject][studentId][period][field] = val;
+            }
+
+            // Real-time recalculation of the specific Period average
+            if (period !== 's1' && period !== 's2') {
+                const sGrades = grades[currentSubject][studentId];
+                const pAvg = getPeriodAvg(sGrades[period]);
+                const avgEl = document.getElementById(`avg-${studentId}-${period}`);
+                
+                if (avgEl) {
+                    if (pAvg !== null) {
+                        avgEl.innerText = pAvg.toFixed(1);
+                        avgEl.className = pAvg >= 5.0 ? "text-xs text-indigo-600 font-bold" : "text-xs text-rose-500 font-bold";
+                    } else {
+                        avgEl.innerText = '-';
+                        avgEl.className = "text-xs text-slate-300";
+                    }
+                }
+            }
+
+            // Recalculate Semester & Yearly Averages
+            const { s1Avg, s2Avg, yearAvg, s1MonthlyAvg, s2MonthlyAvg } = calculateStudentAverages(studentId);
+            
+            // Update Semester Monthly averages display
+            const s1MonthlyValEl = document.getElementById(`s1-monthly-val-${studentId}`);
+            if (s1MonthlyValEl) {
+                s1MonthlyValEl.innerText = s1MonthlyAvg !== null ? s1MonthlyAvg.toFixed(1) : '-';
+            }
+            
+            const s2MonthlyValEl = document.getElementById(`s2-monthly-val-${studentId}`);
+            if (s2MonthlyValEl) {
+                s2MonthlyValEl.innerText = s2MonthlyAvg !== null ? s2MonthlyAvg.toFixed(1) : '-';
+            }
+
+            // Update S1 average under S1 section
+            const s1AvgEl = document.getElementById(`avg-${studentId}-s1`);
+            if (s1AvgEl) {
+                s1AvgEl.innerText = s1Avg > 0 ? s1Avg.toFixed(1) : '-';
+                s1AvgEl.className = s1Avg >= 5.0 ? "text-xs text-indigo-600 font-bold" : (s1Avg > 0 ? "text-xs text-rose-500 font-bold" : "text-xs text-slate-300");
+            }
+
+            // Update S2 average under S2 section
+            const s2AvgEl = document.getElementById(`avg-${studentId}-s2`);
+            if (s2AvgEl) {
+                s2AvgEl.innerText = s2Avg > 0 ? s2Avg.toFixed(1) : '-';
+                s2AvgEl.className = s2Avg >= 5.0 ? "text-xs text-emerald-600 font-bold" : (s2Avg > 0 ? "text-xs text-rose-500 font-bold" : "text-xs text-slate-300");
+            }
+
+            // Update S1 cumulative summary column at the end
+            const s1El = document.getElementById(`s1-avg-${studentId}`);
+            if (s1El) {
+                s1El.innerText = s1Avg > 0 ? s1Avg.toFixed(1) : '-';
+                s1El.className = s1Avg >= 5.0 ? "text-xs text-indigo-600 font-bold" : (s1Avg > 0 ? "text-xs text-rose-500 font-bold" : "text-xs text-slate-300");
+            }
+
+            // Update S2 cumulative summary column at the end
+            const s2El = document.getElementById(`s2-avg-${studentId}`);
+            if (s2El) {
+                s2El.innerText = s2Avg > 0 ? s2Avg.toFixed(1) : '-';
+                s2El.className = s2Avg >= 5.0 ? "text-xs text-emerald-600 font-bold" : (s2Avg > 0 ? "text-xs text-rose-500 font-bold" : "text-xs text-slate-300");
+            }
+
+            // Update Year cumulative summary column
+            const yearEl = document.getElementById(`year-avg-${studentId}`);
+            if (yearEl) {
+                yearEl.innerText = yearAvg > 0 ? yearAvg.toFixed(1) : '-';
+                yearEl.className = yearAvg >= 5.0 ? "text-sm text-indigo-700 font-extrabold" : (yearAvg > 0 ? "text-sm text-rose-600 font-extrabold" : "text-sm text-slate-300");
+            }
+
+            // Update Grade badge
+            const gradeEl = document.getElementById(`grade-${studentId}`);
+            if (gradeEl) {
+                const label = getGradeLabel(yearAvg);
+                gradeEl.innerText = label.text;
+                gradeEl.className = `px-2 py-0.5 text-[10px] font-bold rounded-full ${label.color}`;
+            }
+
+            // Recalculate overall class stats
+            calculateStats();
+            
+            // Auto-save silently
+            saveToLocalStorage(true);
+        }
+
+        function openStudentReportCardModal(studentId, sequenceNumber) {
+            const student = students.find(s => s.id === studentId);
+            if (!student) return;
+
+            // Set student personal context fields using current dynamic sequence index
+            document.getElementById('card-student-id').innerText = sequenceNumber;
+            document.getElementById('card-student-name').innerText = student.name;
+            document.getElementById('card-student-nickname').innerText = student.nickname || '-';
+
+            const studentPhoto = student.photo || `https://placehold.co/150x200/e0f2fe/0369a1?text=${encodeURIComponent(student.nickname || 'Student')}`;
+            document.getElementById('card-student-photo').src = studentPhoto;
+
+            // Resolve academic year and header details
+            let periodName = "";
+            let head1 = "ໃນຫ້ອງ", head2 = "ເສັງ", head3 = "ສະເລ່ຍ";
+
+            if (selectedPeriod === 'm9') periodName = "ເດືອນ 9";
+            else if (selectedPeriod === 'm10') periodName = "ເດືອນ 10";
+            else if (selectedPeriod === 'm11') periodName = "ເດືອນ 11";
+            else if (selectedPeriod === 'm12') periodName = "ເດືອນ 12";
+            else if (selectedPeriod === 's1') {
+                periodName = "ພາກຮຽນ I (ມັງກອນ)";
+                head1 = "ສະເລ່ຍ ພຮ I";
+                head2 = "ເສັງພາກ I";
+                head3 = "ສຸດທ້າຍ";
+            }
+            else if (selectedPeriod === 'm2') periodName = "ເດືອນ 2";
+            else if (selectedPeriod === 'm3') periodName = "ເດືອນ 3";
+            else if (selectedPeriod === 'm4') periodName = "ເດືອນ 4";
+            else if (selectedPeriod === 's2') {
+                periodName = "ພາກຮຽນ II (ພຶດສະພາ)";
+                head1 = "ສະເລ່ຍ ພຮ II";
+                head2 = "ເສັງພາກ II";
+                head3 = "ສຸດທ້າຍ";
+            }
+            else if (selectedPeriod === 'year') {
+                periodName = "ສະຫຼຸບຜົນການຮຽນທັງປີ";
+                head1 = "ສະເລ່ຍ ພຮ I";
+                head2 = "ສະເລ່ຍ ພຮ II";
+                head3 = "ສະເລ່ຍທັງປີ";
+            }
+
+            document.getElementById('card-report-title').innerText = `ຄະແນນ ປະຈຳ${periodName}`;
+            document.getElementById('card-col-header-1').innerText = head1;
+            document.getElementById('card-col-header-2').innerText = head2;
+            document.getElementById('card-col-header-3').innerText = head3;
+
+            // Generate row items and sum metrics
+            let totalSum = 0;
+            let counter = 1;
+
+            Object.keys(subjects).forEach(subKey => {
+                const sGrades = grades[subKey][student.id];
+                const { s1Avg, s2Avg, yearAvg, s1MonthlyAvg, s2MonthlyAvg } = calculateStudentAverages(student.id, subKey);
+
+                let val1 = '-';
+                let val2 = '-';
+                let val3 = '-';
+                let rawVal3 = null;
+
+                if (selectedPeriod === 'year') {
+                    val1 = s1Avg > 0 ? s1Avg.toFixed(2) : '-';
+                    val2 = s2Avg > 0 ? s2Avg.toFixed(2) : '-';
+                    val3 = yearAvg > 0 ? yearAvg.toFixed(2) : '-';
+                    rawVal3 = yearAvg > 0 ? yearAvg : null;
+                } else if (selectedPeriod === 's1') {
+                    const examVal = parseFloat(sGrades['s1'].exam);
+                    val1 = s1MonthlyAvg !== null ? s1MonthlyAvg.toFixed(2) : '-';
+                    val2 = !isNaN(examVal) ? examVal.toFixed(2) : '-';
+                    val3 = s1Avg > 0 ? s1Avg.toFixed(2) : '-';
+                    rawVal3 = s1Avg > 0 ? s1Avg : null;
+                } else if (selectedPeriod === 's2') {
+                    const examVal = parseFloat(sGrades['s2'].exam);
+                    val1 = s2MonthlyAvg !== null ? s2MonthlyAvg.toFixed(2) : '-';
+                    val2 = !isNaN(examVal) ? examVal.toFixed(2) : '-';
+                    val3 = s2Avg > 0 ? s2Avg.toFixed(2) : '-';
+                    rawVal3 = s2Avg > 0 ? s2Avg : null;
+                } else {
+                    const periodData = sGrades[selectedPeriod];
+                    const cVal = parseFloat(periodData.class);
+                    const eVal = parseFloat(periodData.exam);
+                    const pAvg = getPeriodAvg(periodData);
+
+                    val1 = !isNaN(cVal) ? cVal.toFixed(2) : '-';
+                    val2 = !isNaN(eVal) ? eVal.toFixed(2) : '-';
+                    val3 = pAvg !== null ? pAvg.toFixed(2) : '-';
+                    rawVal3 = pAvg;
+                }
+
+                // Inject score values to the visual template rows
+                const rowEl = document.getElementById(`card-row-sub-${counter}`);
+                if (rowEl) {
+                    rowEl.innerHTML = `
+                        <td class="border border-black text-center p-1">${counter}</td>
+                        <td class="border border-black p-1 font-semibold">${subjects[subKey]}</td>
+                        <td class="border border-black text-center p-1">${val1}</td>
+                        <td class="border border-black text-center p-1">${val2}</td>
+                        <td class="border border-black text-center p-1 font-bold ${parseFloat(val3) < 5 ? 'text-red-600' : 'text-slate-800'}">${val3}</td>
+                    `;
+                }
+
+                if (rawVal3 !== null && !isNaN(rawVal3)) {
+                    totalSum += rawVal3;
+                }
+                counter++;
+            });
+
+            // Calculate card cumulative metrics
+            const finalCardAvg = totalSum > 0 ? (totalSum / 12) : 0;
+            document.getElementById('card-total-sum').innerText = totalSum > 0 ? totalSum.toFixed(2) : '0.00';
+            document.getElementById('card-total-avg').innerText = finalCardAvg > 0 ? finalCardAvg.toFixed(2) : '0.00';
+
+            // Render behaviors retrieved from state (perfectly linked with the new columns)
+            const behavior = getOrCreateStudentBehavior(student.id, selectedPeriod, finalCardAvg);
+            
+            document.getElementById('card-classroom-total').innerText = students.length;
+            document.getElementById('card-classroom-girls').innerText = students.filter(s => s.name.startsWith("ນາງ")).length;
+            document.getElementById('card-absent-days').innerText = behavior.absent;
+            document.getElementById('card-unexcused-days').innerText = behavior.unexcused;
+            document.getElementById('card-manner').innerText = behavior.manner;
+            document.getElementById('card-preparation').innerText = behavior.prep;
+            document.getElementById('card-homework').innerText = behavior.hw;
+            document.getElementById('card-conduct-score').innerText = behavior.conduct;
+            document.getElementById('card-deducted-score').innerText = behavior.deducted;
+
+            const commentArea = document.getElementById('card-teacher-comment');
+            commentArea.value = behavior.comment;
+            
+            // Adjust comment textbox interactiveness depending on credentials
+            const isHomeroom = hasBehaviorEditPrivilege() && selectedPeriod !== 'year';
+            if (isHomeroom) {
+                commentArea.disabled = false;
+                document.getElementById('card-comment-editable-badge').classList.remove('hidden');
+                // Attach real-time saver for teacher's commentary box
+                commentArea.oninput = (e) => {
+                    behavior.comment = e.target.value;
+                    localStorage.setItem('m5_1_student_behavior_v2', JSON.stringify(studentBehaviorMetadata));
+                };
+            } else {
+                commentArea.disabled = true;
+                document.getElementById('card-comment-editable-badge').classList.add('hidden');
+                commentArea.oninput = null;
+            }
+
+            // Set current date on the card
+            const today = new Date();
+            const optionDates = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = today.toLocaleDateString('lo-LA', optionDates);
+            document.getElementById('card-date-location').innerText = `ທີ່ ໂຮງຮຽນ ມັດທະຍົມສຶກສາສົມບູນຮາກແກ້ວ, ວັນທີ ${dateStr}`;
+
+            // Show student viewer modal container
+            document.getElementById('view-student-report-modal').classList.remove('hidden');
+        }
+
+        // Close report modal handler
+        function closeStudentModal() {
+            document.getElementById('view-student-report-modal').classList.add('hidden');
+        }
+
+        // Add single student record
+        function addNewStudent() {
+            const nextId = students.length > 0 ? Math.max(...students.map(s => s.id)) + 1 : 1;
+            const newStudent = {
+                id: nextId,
+                name: "ທ້າວ/ນາງ ນັກຮຽນໃໝ່",
+                nickname: "ໃໝ່",
+                name_en: "New Student",
+                one_campus: "ບໍ່ມີ",
+                birthdate: "01/01/2011",
+                father_phone: "-",
+                mother_phone: "-",
+                origin_school: "-",
+                remark: "-"
+            };
+            
+            students.push(newStudent);
+            
+            // Allocate initial scores structures for newly added student records
+            Object.keys(subjects).forEach(sub => {
+                if (!grades[sub]) grades[sub] = {};
+                grades[sub][nextId] = {};
+                periods.forEach(p => {
+                    grades[sub][nextId][p] = { class: '', exam: '' };
+                });
+            });
+
+            saveStudentsAndRefresh();
+            showToast("➕ ເພີ່ມນັກຮຽນໃໝ່ຮຽບຮ້ອຍ! ອາຈານສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ທັນທີ", "text-emerald-400");
+        }
+
+        // Delete single student record
+        function deleteStudent(index) {
+            const student = students[index];
+            showConfirm(
+                "🚨 ຢືນຢັນການລຶບນັກຮຽນ",
+                `ອາຈານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບ "${student.name}" ອອກຈາກລະບົບ? ຂໍ້ມູນຄະແນນ ແລະ ປະຫວັດທັງໝົດຈະຖືກລຶບອອກຢ່າງຖາວອນ.`,
+                true,
+                function() {
+                    students.splice(index, 1);
+                    saveStudentsAndRefresh();
+                    showToast("🗑️ ລຶບນັກຮຽນຮຽບຮ້ອຍແລ້ວ!", "text-amber-400");
+                }
+            );
+        }
+
+        // Shift student row index upward or downward
+        function moveStudent(index, direction) {
+            if (direction === 'up' && index > 0) {
+                const temp = students[index];
+                students[index] = students[index - 1];
+                students[index - 1] = temp;
+            } else if (direction === 'down' && index < students.length - 1) {
+                const temp = students[index];
+                students[index] = students[index + 1];
+                students[index + 1] = temp;
+            }
+            saveStudentsAndRefresh();
+        }
+
+        // Inline directory field edit saver
+        function updateStudentField(index, field, value) {
+            students[index][field] = value;
+            localStorage.setItem('m5_1_students_list_v2', JSON.stringify(students));
+        }
+
+        function saveStudentsAndRefresh() {
+            localStorage.setItem('m5_1_students_list_v2', JSON.stringify(students));
+            localStorage.setItem('m5_1_lao_grades_v2', JSON.stringify(grades));
+            
+            // Re-render open views
+            renderDirectoryTable();
+            if (currentView === 'monthly-overview') {
+                renderMonthlyReport();
+            } else if (currentView === 'subject-entry') {
+                renderTable();
+                calculateStats();
+            }
+        }
+
+        // Render the detailed Student Directory Table with inline editing capabilities
+        function renderDirectoryTable() {
+            const tableBody = document.getElementById('directory-table-body');
+            const searchVal = document.getElementById('directory-search').value.trim().toLowerCase();
+            
+            tableBody.innerHTML = '';
+            
+            students.forEach((student, index) => {
+                // Search filter (Matches on name, nickname, english name, One Campus code, phone numbers, or origin school)
+                const searchStr = `${student.name} ${student.nickname} ${student.name_en} ${student.one_campus} ${student.father_phone} ${student.mother_phone} ${student.origin_school}`.toLowerCase();
+                if (searchVal !== '' && !searchStr.includes(searchVal)) {
+                    return;
+                }
+                
+                const row = document.createElement('tr');
+                row.className = "hover:bg-indigo-50/30 transition duration-150 border-b border-slate-100 text-center";
+                
+                // Construct inline input fields editable exclusively by Homeroom code HK5100
+                const isEditable = hasBehaviorEditPrivilege();
+                const disabledAttr = isEditable ? '' : 'disabled';
+                const inputClass = isEditable 
+                    ? "w-full bg-white border border-slate-200 rounded p-1.5 focus:outline-none focus:border-indigo-500 font-medium" 
+                    : "w-full bg-transparent border-none text-slate-700 text-center";
+
+                const photoSrc = student.photo || "https://placehold.co/150x200/e2e8f0/475569?text=%E0%BA%AE%E0%BA%B9%E0%BA%9A";
+                const photoHtml = isEditable ? `
+                    <div class="flex flex-col items-center gap-1 py-1">
+                        <img src="${photoSrc}" class="w-10 h-14 object-cover rounded border border-slate-200 shadow-sm">
+                        <label class="cursor-pointer bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded text-[9px] border border-indigo-200 transition">
+                            <span>ອັບຮູບ</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="handlePhotoUpload(${index}, this.files[0])">
+                        </label>
+                    </div>
+                ` : `
+                    <div class="flex justify-center py-1">
+                        <img src="${photoSrc}" class="w-10 h-14 object-cover rounded border border-slate-200">
+                    </div>
+                `;
+
+                row.innerHTML = `
+                    <td class="py-3 px-2 text-center font-bold text-slate-400 sticky left-0 bg-white border-r border-slate-200">${index + 1}</td>
+                    <td class="py-3 px-2 text-left sticky left-12 bg-white border-r border-slate-200 z-10">
+                        <input type="text" value="${student.name}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'name', this.value)" 
+                            class="${inputClass} font-bold text-slate-800 text-left min-w-[200px]">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        <input type="text" value="${student.nickname}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'nickname', this.value)" 
+                            class="${inputClass} text-center font-semibold">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        ${photoHtml}
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        <input type="text" value="${student.name_en}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'name_en', this.value)" 
+                            class="${inputClass} font-mono text-left text-xs min-w-[180px]">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200 bg-indigo-50/10">
+                        <input type="text" value="${student.one_campus}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'one_campus', this.value)" 
+                            class="${inputClass} text-center font-semibold text-indigo-700">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        <input type="text" value="${student.birthdate}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'birthdate', this.value)" 
+                            class="${inputClass} text-center text-xs">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        <input type="text" value="${student.father_phone}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'father_phone', this.value)" 
+                            class="${inputClass} text-center text-xs">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        <input type="text" value="${student.mother_phone}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'mother_phone', this.value)" 
+                            class="${inputClass} text-center text-xs">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        <input type="text" value="${student.origin_school}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'origin_school', this.value)" 
+                            class="${inputClass} text-center text-xs font-semibold">
+                    </td>
+                    <td class="py-3 px-1 border-r border-slate-200">
+                        <input type="text" value="${student.remark}" ${disabledAttr}
+                            oninput="updateStudentField(${index}, 'remark', this.value)" 
+                            class="${inputClass} text-center text-xs italic text-slate-400">
+                    </td>
+                    <td class="py-3 px-2">
+                        <div class="flex items-center justify-center gap-1.5">
+                            <button onclick="moveStudent(${index}, 'up')" ${disabledAttr} class="p-1.5 bg-slate-100 hover:bg-slate-200 rounded text-slate-600 disabled:opacity-50" title="ຍ້າຍຂຶ້ນ">
+                                <i class="fa-solid fa-arrow-up text-xs"></i>
+                            </button>
+                            <button onclick="moveStudent(${index}, 'down')" ${disabledAttr} class="p-1.5 bg-slate-100 hover:bg-slate-200 rounded text-slate-600 disabled:opacity-50" title="ຍ້າຍລົງ">
+                                <i class="fa-solid fa-arrow-down text-xs"></i>
+                            </button>
+                            <button onclick="deleteStudent(${index})" ${disabledAttr} class="p-1.5 bg-rose-50 hover:bg-rose-100 rounded text-rose-600 disabled:opacity-50" title="ລົບບັນຊີ">
+                                <i class="fa-solid fa-trash text-xs"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Real-time directory filter input trigger
+        function filterDirectory() {
+            renderDirectoryTable();
+        }
+
+        // Export student directory meta data to CSV spreadsheet
+        function exportDirectoryToCSV() {
+            let csvContent = "\uFEFF"; 
+            csvContent += "ທະບຽນປະຫວັດ ແລະ ຂໍ້ມູນຕິດຕໍ່ນັກຮຽນ ຫ້ອງ ມ.5/1 (ສົກຮຽນ 2026-2027)\n";
+            csvContent += "ລຳດັບ,ຊື່ ແລະ ນາມສະກຸນ (Lao),ຊື່ຫຼິ້ນ,Name (English),ລະຫັດ One Campus,ວັນເດືອນປີເກີດ,ເບີໂທລະສັບພໍ່,ເບີໂທລະສັບແມ່,ມາຈາກ ຮຮ,ໝາຍເຫດ\n";
+            
+            students.forEach((student, index) => {
+                csvContent += `${index + 1},"${student.name}","${student.nickname}","${student.name_en}","${student.one_campus}","${student.birthdate}","${student.father_phone}","${student.mother_phone}","${student.origin_school}","${student.remark}"\n`;
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `ທະບຽນປະຫວັດ_ມ5_1_2026.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast("📥 ດາວໂຫຼດທະບຽນປະຫວັດຮຽບຮ້ອຍ!", "text-emerald-400");
+        }
+
+        function calculateStats() {
+            let totalSum = 0;
+            let passCount = 0;
+            let maxScore = 0;
+            let minScore = 10;
+            let activeStudents = 0;
+
+            students.forEach(student => {
+                const { yearAvg } = calculateStudentAverages(student.id);
+                if (yearAvg > 0) {
+                    totalSum += yearAvg;
+                    if (yearAvg >= 5.0) passCount++;
+                    if (yearAvg > maxScore) maxScore = yearAvg;
+                    if (yearAvg < minScore) minScore = yearAvg;
+                    activeStudents++;
+                }
+            });
+
+            if (activeStudents === 0) minScore = 0;
+
+            const avg = activeStudents > 0 ? (totalSum / activeStudents).toFixed(2) : "0.0";
+            const passPercent = activeStudents > 0 ? Math.round((passCount / activeStudents) * 100) : 0;
+
+            document.getElementById('class-avg').innerText = avg;
+            document.getElementById('pass-rate').innerText = passPercent + "%";
+            document.getElementById('pass-count').innerText = `${passCount} ຈາກ ${students.length} ຄົນ (ຄະແນນສະເລ່ຍ ≥ 5.0)`;
+            document.getElementById('max-score').innerText = maxScore.toFixed(2);
+            document.getElementById('min-score').innerText = minScore.toFixed(2);
+        }
+
+        // Save data to LocalStorage
+        function saveToLocalStorage(isAuto = false) {
+            localStorage.setItem('m5_1_lao_grades_v2', JSON.stringify(grades));
+            if (!isAuto) {
+                showToast("📥 ບັນທຶກຂໍ້ມູນຄະແນນທັງໝົດສຳເລັດ!", "text-emerald-400");
+            }
+        }
+
+        function showConfirm(title, message, isWarning, onConfirm) {
+            const modal = document.getElementById('confirm-modal');
+            const modalTitle = document.getElementById('confirm-modal-title');
+            const modalMessage = document.getElementById('confirm-modal-message');
+            const modalIconBg = document.getElementById('confirm-modal-icon-bg');
+            const modalIcon = document.getElementById('confirm-modal-icon');
+            const btnCancel = document.getElementById('confirm-modal-cancel');
+            const btnConfirm = document.getElementById('confirm-modal-confirm');
+
+            if (isWarning) {
+                modalIconBg.className = "p-3 bg-rose-50 text-rose-650 rounded-full";
+                modalIcon.className = "fa-solid fa-triangle-exclamation text-xl";
+                btnConfirm.className = "bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition duration-150 shadow-md";
+            } else {
+                modalIconBg.className = "p-3 bg-amber-50 text-amber-600 rounded-full";
+                modalIcon.className = "fa-solid fa-circle-question text-xl";
+                btnConfirm.className = "bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition duration-150 shadow-md";
+            }
+
+            modalTitle.innerText = title;
+            modalMessage.innerText = message;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.children[0].classList.replace('scale-95', 'scale-100');
+            }, 10);
+
+            const cleanUp = () => {
+                modal.children[0].classList.replace('scale-100', 'scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 150);
+            };
+
+            btnCancel.onclick = () => {
+                cleanUp();
+            };
+
+            btnConfirm.onclick = () => {
+                onConfirm();
+                cleanUp();
+            };
+        }
+
+        // Trigger warning to clear grades
+        function confirmClearGrades() {
+            if (!hasSubjectEditPrivilege(currentSubject)) return;
+
+            showConfirm(
+                "🚨 ຢືນຢັນການລຶບຄະແນນ",
+                "ອາຈານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບຄະແນນທັງໝົດຂອງວິຊາປັດຈຸບັນ? ຂໍ້ມູນນີ້ບໍ່ສາມາດກູ້ຄືນໄດ້.",
+                true,
+                function() {
+                    grades[currentSubject] = {};
+                    verifySubjectGrades(currentSubject);
+                    renderTable();
+                    calculateStats();
+                    saveToLocalStorage();
+                    showToast("🗑️ ລ້າງຄະແນນວິຊາປັດຈຸບັນຮຽບຮ້ອຍແລ້ວ!", "text-amber-400");
+                }
+            );
+        }
+
+        // Trigger mock-data generator
+        function confirmDemoFill() {
+            if (!hasBehaviorEditPrivilege()) {
+                showToast("⚠️ ທ່ານບໍ່ມີສິດສຸ່ມຄະແນນຕົວຢ່າງ!", "text-red-400");
+                return;
+            }
+
+            showConfirm(
+                "🎲 ສຸ່ມຄະແນນທົດສອບ",
+                "ລະບົບຈະທຳການສຸ່ມຄະແນນຕົວຢ່າງທຸກວິຊາ, ທຸກເດືອນ ໃຫ້ກັບນັກຮຽນທຸກຄົນ. ຂໍ້ມູນເກົ່າຈະຖືກຂຽນທັບທັງໝົດ, ອາຈານຕ້ອງການດຳເນີນການຕໍ່ບໍ່?",
+                false,
+                function() {
+                    fillDemoData();
+                }
+            );
+        }
+
+        // Subject Changer Dropdown Handler
+        document.getElementById('subject-select').addEventListener('change', (e) => {
+            const targetSub = e.target.value;
+            
+            // Check privilege rules on changing select dropdown
+            if (!hasSubjectEditPrivilege(targetSub)) {
+                // Return select value back to current subject
+                e.target.value = currentSubject;
+                showToast("⚠️ ທ່ານບໍ່ມີສິດແກ້ໄຂວິຊານັ້ນ!", "text-red-400");
+                return;
+            }
+
+            currentSubject = targetSub;
+            verifySubjectGrades(currentSubject);
+            document.getElementById('current-subject-title').innerText = subjects[currentSubject];
+            renderTable();
+            calculateStats();
+            showToast(`📚 ປ່ຽນວິຊາເປັນ: ${e.target.options[e.target.selectedIndex].text}`, "text-indigo-400");
+        });
+
+        // Search Filter on single subject table
+        function filterStudents() {
+            renderTable();
+        }
+
+        // Filter buttons handler
+        function setFilter(type) {
+            currentFilter = type;
+            
+            const btnAll = document.getElementById('filter-all');
+            const btnPassed = document.getElementById('filter-passed');
+            const btnFailed = document.getElementById('filter-failed');
+
+            btnAll.className = "bg-slate-50 text-slate-600 hover:bg-slate-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200";
+            btnPassed.className = "bg-slate-50 text-slate-600 hover:bg-slate-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200";
+            btnFailed.className = "bg-slate-50 text-slate-600 hover:bg-slate-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200";
+
+            if (type === 'all') {
+                btnAll.className = "bg-indigo-50 text-indigo-700 border border-indigo-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200";
+            } else if (type === 'passed') {
+                btnPassed.className = "bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200";
+            } else if (type === 'failed') {
+                btnFailed.className = "bg-rose-50 text-rose-700 border border-rose-100 px-3 py-1.5 rounded-lg text-xs font-medium transition duration-200";
+            }
+
+            renderTable();
+        }
+
+        function fillDemoData() {
+            Object.keys(subjects).forEach(subKey => {
+                students.forEach(student => {
+                    periods.forEach(p => {
+                        const hasGrade = Math.random() > 0.15; // 85% chance
+                        if (hasGrade) {
+                            const cls = Math.round((5 + Math.random() * 5) * 10) / 10; 
+                            const exm = Math.round((4.5 + Math.random() * 5.5) * 10) / 10; 
+                            grades[subKey][student.id][p] = { class: cls, exam: exm };
+                        } else {
+                            grades[subKey][student.id][p] = { class: '', exam: '' };
+                        }
+                    });
+                });
+            });
+
+            // Fill behavior metadata with some mock attendance and conduct deductions
+            students.forEach(student => {
+                periods.forEach(p => {
+                    if (p !== 'year') {
+                        const absent = Math.random() > 0.7 ? Math.floor(Math.random() * 3) : 0;
+                        const unexcused = absent > 0 && Math.random() > 0.5 ? 1 : 0;
+                        const deducted = Math.random() > 0.7 ? Math.floor(Math.random() * 2) * 5 : 0; // 0, 5, or 10 points
+                        const manners = ["ດີເລີດ", "ດີຫຼາຍ", "ດີ", "ປານກາງ"];
+                        const manner = manners[Math.floor(Math.random() * manners.length)];
+                        
+                        studentBehaviorMetadata[student.id][p] = {
+                            absent,
+                            unexcused,
+                            manner,
+                            prep: "ດີ",
+                            hw: "ດີ",
+                            conduct: 600, // will be recalculated correctly
+                            deducted,
+                            comment: "ຜົນການຮຽນໃນເດືອນນີ້ຢູ່ໃນເກນທີ່ດີ."
+                        };
+                    }
+                });
+                recalculateConductScores(student.id);
+            });
+            
+            // Refresh active views
+            if (currentView === 'monthly-overview') {
+                renderMonthlyReport();
+            } else if (currentView === 'subject-entry') {
+                renderTable();
+                calculateStats();
+            }
+            
+            saveToLocalStorage();
+            showToast("✨ ສຸ່ມຄະແນນຕົວຢ່າງທຸກວິຊາສຳເລັດແລ້ວ!", "text-yellow-400");
+        }
+
+        // Export To CSV (Excel friendly for current selected subject)
+        function exportToCSV() {
+            let csvContent = "\uFEFF"; 
+            csvContent += "ລຳດັບ,ຊື່ ແລະ ນາມສະກຸນ,ຊື່ຫຼີ້ນ,";
+            periods.forEach(p => {
+                let pName = p === 'm9' ? 'ເດືອນ 9' : p === 'm10' ? 'ເດືອນ 10' : p === 'm11' ? 'ເດືອນ 11' : p === 'm12' ? 'ເດືອນ 12' : p === 's1' ? 'ພຮ 1' : p === 'm2' ? 'ເດືອນ 2' : p === 'm3' ? 'ເດືອນ 3' : p === 'm4' ? 'ເດືອນ 4' : 'ພຮ 2';
+                
+                if (p === 's1') {
+                    csvContent += "ສະເລ່ຍ ພຮ 1,ເສັງ ພຮ1,ສະເລ່ຍສຸດທ້າຍ ພຮ1,";
+                } else if (p === 's2') {
+                    csvContent += "ສະເລ່ຍ ພຮ 2,ເສັງ ພຮ2,ສະເລ່ຍສຸດທ້າຍ ພຮ2,";
+                } else {
+                    csvContent += `${pName}_ໃນຫ້ອງ,${pName}_ເສັງ,${pName}_ສະເລ່ຍ,`;
+                }
+            });
+            csvContent += "ສະເລ່ຍ ພຮ1,ສະເລ່ຍ ພຮ2,ສະເລ່ຍທັງປີ,ເກຣດ\n";
+
+            const currentSubText = subjects[currentSubject];
+
+            students.forEach((student, index) => {
+                const sGrades = grades[currentSubject][student.id];
+                const { s1Avg, s2Avg, yearAvg, s1MonthlyAvg, s2MonthlyAvg } = calculateStudentAverages(student.id);
+                const gradeLabel = getGradeLabel(yearAvg);
+
+                csvContent += `${index + 1},"${student.name}","${student.nickname}",`;
+                
+                periods.forEach(p => {
+                    const data = sGrades[p] || { class: '', exam: '' };
+                    
+                    if (p === 's1') {
+                        csvContent += `${s1MonthlyAvg !== null ? s1MonthlyAvg.toFixed(1) : ''},${data.exam || ''},${s1Avg > 0 ? s1Avg.toFixed(1) : ''},`;
+                    } else if (p === 's2') {
+                        csvContent += `${s2MonthlyAvg !== null ? s2MonthlyAvg.toFixed(1) : ''},${data.exam || ''},${s2Avg > 0 ? s2Avg.toFixed(1) : ''},`;
+                    } else {
+                        const pAvg = getPeriodAvg(data);
+                        csvContent += `${data.class || ''},${data.exam || ''},${pAvg !== null ? pAvg.toFixed(1) : ''},`;
+                    }
+                });
+
+                csvContent += `${s1Avg > 0 ? s1Avg.toFixed(1) : ''},${s2Avg > 0 ? s2Avg.toFixed(1) : ''},${yearAvg > 0 ? yearAvg.toFixed(1) : ''},"${gradeLabel.text}"\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `ຄະແນນ_ມ5-1_ວິຊາ_${currentSubText}_2026.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("📥 ດາວໂຫຼດໄຟລ໌ຄະແນນຮຽນສຳເລັດແລ້ວ!", "text-emerald-400");
+        }
+
+        function exportMonthlyReportToExcel() {
+            let csvContent = "\uFEFF"; 
+            
+            let pName = "";
+            let subLabel1 = "ໃນຫ້ອງ";
+            let subLabel2 = "ເສັງ";
+            let subLabel3 = "ສະເລ່ຍ";
+
+            if (selectedPeriod === 'm9') pName = "ເດືອນ 9";
+            else if (selectedPeriod === 'm10') pName = "ເດືອນ 10";
+            else if (selectedPeriod === 'm11') pName = "ເດືອນ 11";
+            else if (selectedPeriod === 'm12') pName = "ເດືອນ 12";
+            else if (selectedPeriod === 's1') {
+                pName = "ພາກຮຽນ I";
+                subLabel1 = "ສະເລ່ຍ ພຮ";
+                subLabel2 = "ເສັງພາກ";
+                subLabel3 = "ສຸດທ້າຍ";
+            }
+            else if (selectedPeriod === 'm2') pName = "ເດືອນ 2";
+            else if (selectedPeriod === 'm3') pName = "ເດືອນ 3";
+            else if (selectedPeriod === 'm4') pName = "ເດືອນ 4";
+            else if (selectedPeriod === 's2') {
+                pName = "ພາກຮຽນ II";
+                subLabel1 = "ສະເລ່ຍ ພຮ";
+                subLabel2 = "ເສັງພາກ";
+                subLabel3 = "ສຸດທ້າຍ";
+            }
+            else if (selectedPeriod === 'year') {
+                pName = "ທັງປີ";
+                subLabel1 = "ສະເລ່ຍ ພຮ 1";
+                subLabel2 = "ສະເລ່ຍ ພຮ 2";
+                subLabel3 = "ສະເລ່ຍທັງປີ";
+            }
+
+            csvContent += `ລາຍງານຄະແນນລະອຽດທຸກວິຊາ ມ.5/1 ປະຈຳ: ${pName}\n`;
+            
+            // Row 1 of Header
+            csvContent += "ລຳດັບ,ຊື່ ແລະ ນາມສະກຸນ,ຊື່ຫຼີ້ນ,";
+            Object.keys(subjects).forEach(subKey => {
+                csvContent += `${subjects[subKey]},,,`;
+            });
+            csvContent += "ຄະແນນລວມ,ຄະແນນສະເລ່ຍ,ລວມວັນຂາດ,ຂາດບໍ່ມີເຫດຜົນ,ມາລະຍາດ,ການກະກຽມອຸປະກອນ,ການສົ່ງວຽກບ້ານ,ຄະແນນຖືກຕັດ,ຄຸນສົມບັດຄົງເຫຼືອ\n";
+
+            // Row 2 of Header (subheaders)
+            csvContent += ",,,";
+            Object.keys(subjects).forEach(() => {
+                csvContent += `${subLabel1},${subLabel2},${subLabel3},`;
+            });
+            csvContent += "\n";
+
+            // Data rows
+            students.forEach((student, index) => {
+                csvContent += `${index + 1},"${student.name}","${student.nickname}",`;
+                
+                let totalSum = 0;
+
+                Object.keys(subjects).forEach(subKey => {
+                    const sGrades = grades[subKey][student.id];
+                    const { s1Avg, s2Avg, yearAvg, s1MonthlyAvg, s2MonthlyAvg } = calculateStudentAverages(student.id, subKey);
+
+                    let val1 = '';
+                    let val2 = '';
+                    let val3 = '';
+                    let rawVal3 = null;
+
+                    if (selectedPeriod === 'year') {
+                        val1 = s1Avg > 0 ? s1Avg.toFixed(1) : '';
+                        val2 = s2Avg > 0 ? s2Avg.toFixed(1) : '';
+                        val3 = yearAvg > 0 ? yearAvg.toFixed(1) : '';
+                        rawVal3 = yearAvg > 0 ? yearAvg : null;
+                    } else if (selectedPeriod === 's1') {
+                        const examVal = parseFloat(sGrades['s1'].exam);
+                        val1 = s1MonthlyAvg !== null ? s1MonthlyAvg.toFixed(1) : '';
+                        val2 = !isNaN(examVal) ? examVal.toFixed(1) : '';
+                        val3 = s1Avg > 0 ? s1Avg.toFixed(1) : '';
+                        rawVal3 = s1Avg > 0 ? s1Avg : null;
+                    } else if (selectedPeriod === 's2') {
+                        const examVal = parseFloat(sGrades['s2'].exam);
+                        val1 = s2MonthlyAvg !== null ? s2MonthlyAvg.toFixed(1) : '';
+                        val2 = !isNaN(examVal) ? examVal.toFixed(1) : '';
+                        val3 = s2Avg > 0 ? s2Avg.toFixed(1) : '';
+                        rawVal3 = s2Avg > 0 ? s2Avg : null;
+                    } else {
+                        const periodData = sGrades[selectedPeriod];
+                        const cVal = parseFloat(periodData.class);
+                        const eVal = parseFloat(periodData.exam);
+                        const pAvg = getPeriodAvg(periodData);
+
+                        val1 = !isNaN(cVal) ? cVal.toFixed(1) : '';
+                        val2 = !isNaN(eVal) ? eVal.toFixed(1) : '';
+                        val3 = pAvg !== null ? pAvg.toFixed(1) : '';
+                        rawVal3 = pAvg;
+                    }
+
+                    csvContent += `${val1},${val2},${val3},`;
+
+                    if (rawVal3 !== null && !isNaN(rawVal3)) {
+                        totalSum += rawVal3;
+                    }
+                });
+
+                const avgOfAll = totalSum > 0 ? (totalSum / 12) : 0;
+                const behavior = getOrCreateStudentBehavior(student.id, selectedPeriod, avgOfAll);
+
+                csvContent += `"${totalSum > 0 ? totalSum.toFixed(1) : ''}","${totalSum > 0 ? avgOfAll.toFixed(2) : ''}",`;
+                csvContent += `"${behavior.absent}","${behavior.unexcused}","${behavior.manner}","${behavior.prep}","${behavior.hw}","${behavior.deducted}","${behavior.conduct}"\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `ລາຍງານຄະແນນລວມລະອຽດ_ມ5_1_ປະຈຳ_${pName}_2026.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast(`📥 ດາວໂຫຼດລາຍງານຄະແນນລະອຽດປະຈຳ ${pName} ສຳເລັດ!`, "text-emerald-400");
+        }
+
+        // Export ALL grades across all 12 subjects and periods to a master backup file
+        function exportAllToExcel() {
+            let csvContent = "\uFEFF"; 
+            csvContent += "ຂໍ້ມູນຄະແນນທຸກວິຊາ (12 ວິຊາ) ແລະ ທຸກເດືອນ ມ.5/1 (ສົກຮຽນ 2026-2027)\n\n";
+
+            Object.keys(subjects).forEach(subKey => {
+                csvContent += `ວິຊາ: ${subjects[subKey]}\n`;
+                csvContent += "ລຳດັບ,ຊື່ ແລະ ນາມສະກຸນ,ຊື່ຫຼີ້ນ,";
+                periods.forEach(p => {
+                    csvContent += `${p}_ໃນຫ້ອງ,${p}_ເສັງ,`;
+                });
+                csvContent += "ສະເລ່ຍ ພຮ1,ສະເລ່ຍ ພຮ2,ສະເລ່ຍທັງປີ\n";
+
+                students.forEach((student, index) => {
+                    const sGrades = grades[subKey][student.id];
+                    const { s1Avg, s2Avg, yearAvg } = calculateStudentAverages(student.id, subKey);
+                    
+                    csvContent += `${index + 1},"${student.name}","${student.nickname}",`;
+                    periods.forEach(p => {
+                        const data = sGrades[p] || { class: '', exam: '' };
+                        csvContent += `${data.class || ''},${data.exam || ''},`;
+                    });
+                    csvContent += `${s1Avg > 0 ? s1Avg.toFixed(1) : ''},${s2Avg > 0 ? s2Avg.toFixed(1) : ''},${yearAvg > 0 ? yearAvg.toFixed(1) : ''}\n`;
+                });
+                csvContent += "\n\n";
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `ຄະແນນແມ່ແບບທຸກວິຊາ_ມ5_1_2026.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("📥 ດາວໂຫຼດຖານຂໍ້ມູນຄະແນນທຸກວິຊາສຳເລັດແລ້ວ!", "text-violet-400");
+        }
+
+        // Simple custom Toast notifications
+        function showToast(message, iconClass = "text-emerald-400") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMsg.innerText = message;
+            toastIcon.className = iconClass;
+
+            toast.className = toast.className.replace('translate-y-20 opacity-0 pointer-events-none', 'translate-y-0 opacity-100 pointer-events-auto');
+            
+            setTimeout(() => {
+                toast.className = toast.className.replace('translate-y-0 opacity-100 pointer-events-auto', 'translate-y-20 opacity-0 pointer-events-none');
+            }, 3000);
+        }
+
+        // Start App
+        initializeSystem();
+    </script>
+</body>
+</html>
